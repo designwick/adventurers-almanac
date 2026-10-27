@@ -329,18 +329,18 @@ body.gate-locked .scribe-trigger{display:none}
 <div class="scribe-scrim" id="scribeScrim" hidden>
   <aside class="scribe-panel" role="dialog" aria-modal="true" aria-labelledby="scribeTitle" aria-describedby="scribeIntro">
     <div class="scribe-head">
-      <div><div class="eyebrow">For the next edition</div><h2 id="scribeTitle">Leave a Field Note</h2><p id="scribeIntro">Record a memory, correction or future idea. Drafts stay on this device until you copy or share them with the group.</p></div>
+      <div><div class="eyebrow">For the next edition</div><h2 id="scribeTitle">Leave a Field Note</h2><p id="scribeIntro">Record a memory, correction or archive idea. Drafts stay on this device until you share them by email with the archivist.</p></div>
       <button class="scribe-close" id="scribeClose" type="button" aria-label="Close field notes">×</button>
     </div>
     <form class="scribe-form" id="scribeForm">
-      <div class="scribe-field"><label for="scribeName">Your name</label><input id="scribeName" name="name" autocomplete="name" placeholder="Optional"></div>
-      <div class="scribe-field"><label for="scribeKind">Note type</label><select id="scribeKind" name="kind"><option>Campaign memory</option><option>Correction</option><option>Scheduling note</option><option>Idea for next time</option><option>Other</option></select></div>
-      <div class="scribe-field full"><label for="scribeSection">Related chapter</label><select id="scribeSection" name="section"></select></div>
+      <div class="scribe-field"><label for="scribeName">Player name</label><input id="scribeName" name="name" autocomplete="name" placeholder="Optional"></div>
+      <div class="scribe-field"><label for="scribeKind">Note type</label><select id="scribeKind" name="kind"><option>Campaign memory</option><option>Session correction</option><option>Scheduling note</option><option>Idea for the archive</option></select></div>
+      <div class="scribe-field full"><label for="scribeSection">Related archive section</label><select id="scribeSection" name="section"></select></div>
       <div class="scribe-field full"><label for="scribeText">What should the archivist know?</label><textarea id="scribeText" name="text" required placeholder="Add the date, character or moment if you remember it…"></textarea></div>
       <button class="scribe-button" type="submit">Save draft</button><p class="scribe-status" id="scribeStatus" aria-live="polite"></p>
     </form>
     <section class="drafts" aria-labelledby="draftsTitle">
-      <div class="drafts-head"><h3 id="draftsTitle">Notes in your satchel</h3><button class="note-action" id="copyAllNotes" type="button" hidden>Copy all</button></div>
+      <div class="drafts-head"><h3 id="draftsTitle">Notes in your satchel</h3></div>
       <div id="draftList" class="draft-list"></div>
     </section>
   </aside>
@@ -2195,12 +2195,12 @@ window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
 show(location.hash.slice(1));
 
 /* ---------- warded entrance ---------- */
-const PASSCODE_SHA256='73f17c4b5ccda0abd40bfc6f517582cfb1f955b4d163482b2af611811bf4c26c';
+const PASSCODE_SHA256='8a73f8e5406db387366e3239221bae582854cd3b5c305ccb7bb8655ccdd1ce3d';
 const entryGate=document.getElementById('entryGate'),entryForm=document.getElementById('entryForm'),entryPhrase=document.getElementById('entryPhrase'),gateMessage=document.getElementById('gateMessage');
 const protectedPage=[document.querySelector('.masthead'),document.querySelector('.nav'),main,document.getElementById('scribeOpen')].filter(Boolean);
 function setPageInert(value){protectedPage.forEach(el=>el.inert=value)}
 function gateSessionGet(){try{return sessionStorage.getItem('almanac-entry-granted')}catch{return null}}
-function gateSessionSet(){try{sessionStorage.setItem('almanac-entry-granted','v1')}catch{}}
+function gateSessionSet(){try{sessionStorage.setItem('almanac-entry-granted','v2')}catch{}}
 async function phraseDigest(value){
  if(!globalThis.crypto?.subtle)throw new Error('unsupported');
  const bytes=new TextEncoder().encode(value.trim().toLocaleLowerCase());
@@ -2214,7 +2214,7 @@ function openArchive(skipAnimation=false){
  window.setTimeout(()=>{entryGate.hidden=true;entryGate.classList.remove('is-unlocking');document.querySelector('.brand')?.focus()},1050);
 }
 setPageInert(true);
-if(gateSessionGet()==='v1')openArchive(true);else requestAnimationFrame(()=>entryPhrase.focus());
+if(gateSessionGet()==='v2')openArchive(true);else requestAnimationFrame(()=>entryPhrase.focus());
 entryForm.addEventListener('submit',async e=>{
  e.preventDefault();const button=entryForm.querySelector('button');button.disabled=true;gateMessage.textContent='The runes are listening…';
  try{
@@ -2226,29 +2226,26 @@ entryForm.addEventListener('submit',async e=>{
 entryGate.addEventListener('animationend',e=>{if(e.animationName==='ward-denied')entryGate.classList.remove('is-denied')});
 
 /* ---------- field notes ---------- */
-const NOTES_KEY='almanac-field-notes-v1',NAME_KEY='almanac-scribe-name-v1';
-const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),scribeCount=document.getElementById('scribeCount'),copyAllNotes=document.getElementById('copyAllNotes');
+const NOTES_KEY='almanac-field-notes-v1',NAME_KEY='almanac-scribe-name-v1',FEEDBACK_EMAIL='designwick+almanac@gmail.com';
+const FIELD_NOTE_SECTIONS=[['sessions','Sessions & recaps','sessions'],['scheduling','Scheduling & dates','sessions'],['campaigns','Campaigns · General','table'],['shatterbane','Shatterbane','shatterbane'],['theseus','Starship Theseus','theseus'],['toa','Tomb of Annihilation','toa'],['cos','Curse of Strahd','cos']];
+const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),scribeCount=document.getElementById('scribeCount');
 let lastScribeFocus=null;
-scribeSection.innerHTML=CH.map(([id,label,,group])=>`<option value="${id}">${esc(group)} · ${esc(label)}</option>`).join('');
+scribeSection.innerHTML=FIELD_NOTE_SECTIONS.map(([id,label])=>`<option value="${id}">${esc(label)}</option>`).join('');
 try{scribeName.value=localStorage.getItem(NAME_KEY)||''}catch{}
 function readNotes(){try{const saved=JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');return Array.isArray(saved)?saved:[]}catch{return[]}}
 function writeNotes(notes){try{localStorage.setItem(NOTES_KEY,JSON.stringify(notes));return true}catch{return false}}
-function normalizedSection(){let id=location.hash.slice(1);if(id==='party')id='chat';if(id==='campaigns')id='table';return CH.some(c=>c[0]===id)?id:'table'}
-function sectionLabel(id){return CH.find(c=>c[0]===id)?.[1]||id}
+function normalizedSection(){const id=location.hash.slice(1);if(FIELD_NOTE_SECTIONS.some(s=>s[0]===id))return id;if(id==='table'||id==='campaigns')return'campaigns';return'sessions'}
+function sectionInfo(id){return FIELD_NOTE_SECTIONS.find(s=>s[0]===id)||FIELD_NOTE_SECTIONS[0]}
+function sectionLabel(id){return sectionInfo(id)[1]}
 function fieldNoteText(note){
- const who=note.name||'Anonymous adventurer',url=`https://adventure.designwick.com/#${note.section}`;
+ const who=note.name||'Anonymous adventurer',url=`https://adventure.designwick.com/#${sectionInfo(note.section)[2]}`;
  return `THE ADVENTURERS' ALMANAC — FIELD NOTE\nFrom: ${who}\nType: ${note.kind}\nChapter: ${sectionLabel(note.section)}\nPage: ${url}\nRecorded: ${new Date(note.created).toLocaleString()}\n\n${note.text}`;
-}
-async function copyText(text){
- try{await navigator.clipboard.writeText(text);return true}catch{
-  const area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.cssText='position:fixed;opacity:0';document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand('copy')}catch{}area.remove();return ok;
- }
 }
 function setScribeStatus(message){scribeStatus.textContent=message;window.clearTimeout(setScribeStatus.timer);setScribeStatus.timer=window.setTimeout(()=>{scribeStatus.textContent=''},3200)}
 function renderNotes(){
- const notes=readNotes();scribeCount.textContent=notes.length||'';scribeCount.classList.toggle('has-notes',notes.length>0);copyAllNotes.hidden=!notes.length;
+ const notes=readNotes();scribeCount.textContent=notes.length||'';scribeCount.classList.toggle('has-notes',notes.length>0);
  if(!notes.length){draftList.innerHTML='<p class="draft-empty">Your satchel is empty. Add a memory or correction above.</p>';return}
- draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}</div><p>${esc(note.text)}</p><div class="draft-actions"><button class="note-action" type="button" data-note-action="share">Share / copy</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
+ draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}</div><p>${esc(note.text)}</p><div class="draft-actions"><button class="note-action" type="button" data-note-action="email">Share by email</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
 }
 function showScribe(){lastScribeFocus=document.activeElement;scribeSection.value=normalizedSection();scribeScrim.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>{scribeScrim.classList.add('is-open');scribePanel.querySelector('input,select,textarea,button')?.focus()})}
 function hideScribe(){scribeScrim.classList.remove('is-open');document.body.style.overflow='';window.setTimeout(()=>{scribeScrim.hidden=true;lastScribeFocus?.focus()},reduceMotion.matches?0:220)}
@@ -2258,18 +2255,16 @@ scribeForm.addEventListener('submit',e=>{
  e.preventDefault();const data=new FormData(scribeForm),text=String(data.get('text')||'').trim();if(!text)return;
  const note={id:globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random()}`,name:String(data.get('name')||'').trim(),kind:String(data.get('kind')||'Other'),section:String(data.get('section')||'table'),text,created:new Date().toISOString()};
  const notes=readNotes();notes.unshift(note);
- if(!writeNotes(notes)){setScribeStatus('This browser would not save the note. Copy the text before closing.');return}
+ if(!writeNotes(notes)){setScribeStatus('This browser would not save the note. Try again before closing.');return}
  try{localStorage.setItem(NAME_KEY,note.name)}catch{}
- scribeForm.querySelector('textarea').value='';renderNotes();setScribeStatus('Draft tucked into your satchel. Share it when ready.');
+ scribeForm.querySelector('textarea').value='';renderNotes();setScribeStatus('Draft tucked into your satchel. Email it when ready.');
 });
 draftList.addEventListener('click',async e=>{
  const button=e.target.closest('[data-note-action]');if(!button)return;const card=button.closest('[data-note-id]'),notes=readNotes(),note=notes.find(n=>n.id===card.dataset.noteId);if(!note)return;
  if(button.dataset.noteAction==='delete'){writeNotes(notes.filter(n=>n.id!==note.id));renderNotes();setScribeStatus('Note discarded.');return}
- const text=fieldNoteText(note);
- if(navigator.share){try{await navigator.share({title:'Almanac field note',text});setScribeStatus('Field note shared.');return}catch(err){if(err?.name==='AbortError')return}}
- setScribeStatus(await copyText(text)?'Field note copied—paste it into the group chat.':'Select and copy the note manually.');
+ const subject=`[Almanac Field Note] ${note.kind} — ${sectionLabel(note.section)}`,body=fieldNoteText(note);
+ setScribeStatus('Opening your preferred email app…');window.location.href=`mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
-copyAllNotes.addEventListener('click',async()=>{const text=readNotes().map(fieldNoteText).join('\n\n————————————\n\n');setScribeStatus(await copyText(text)?'All field notes copied.':'The notes could not be copied automatically.')});
 renderNotes();
 </script>
 
