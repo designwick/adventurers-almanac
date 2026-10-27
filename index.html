@@ -233,9 +233,10 @@ body.gate-locked>.masthead,body.gate-locked>.nav,body.gate-locked>#main{filter:b
 .gate-die{fill:var(--page);stroke:var(--crimson);stroke-width:2.2;transform-origin:center}.gate-die-line{fill:none;stroke:var(--crimson);stroke-width:1.2}
 .gate-card .eyebrow{margin-bottom:4px}.gate-card h1{margin:0;color:var(--crimson);font-size:clamp(30px,8vw,44px);line-height:1.08}.gate-card>p{max-width:38ch;margin:12px auto;color:var(--ink-2)}
 .gate-form{margin-top:24px;text-align:left}.gate-form label,.scribe-form label{display:block;margin-bottom:6px;font-family:var(--f-sc);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-.gate-entry{display:grid;grid-template-columns:1fr auto;gap:8px}.gate-entry input,.scribe-form input,.scribe-form select,.scribe-form textarea{width:100%;border:1px solid var(--rule);border-radius:2px;background:#fffdf7;color:var(--ink);font:16px var(--f-ui);padding:11px 12px;outline:none}.gate-entry input:focus,.scribe-form input:focus,.scribe-form select:focus,.scribe-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,146,63,.18)}
-.gate-button,.scribe-button{border:1px solid #6f1717;border-radius:2px;background:var(--crimson);color:#fffdf7;padding:10px 16px;font:700 13px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer;box-shadow:0 2px 0 #5a1111}.gate-button:hover,.scribe-button:hover{background:#a52525}.gate-button:focus-visible,.scribe-button:focus-visible,.scribe-trigger:focus-visible,.scribe-close:focus-visible,.note-action:focus-visible{outline:3px solid rgba(184,146,63,.58);outline-offset:2px}.gate-button:disabled{opacity:.65;cursor:wait}
-.gate-message{min-height:22px;margin:8px 0 0!important;font:14px var(--f-ui);color:var(--crimson)!important;text-align:center}.gate-foot{margin:20px auto 0!important;font:13px var(--f-ui);color:var(--ink-3)!important}.gate-foot span{color:var(--gold);padding:0 6px}
+.gate-entry{display:grid;grid-template-columns:1fr auto;gap:8px}.password-field{position:relative;min-width:0}.gate-entry input,.scribe-form input,.scribe-form select,.scribe-form textarea{width:100%;border:1px solid var(--rule);border-radius:2px;background:#fffdf7;color:var(--ink);font:16px var(--f-ui);padding:11px 12px;outline:none}.password-field input{padding-right:46px}.gate-entry input:focus,.scribe-form input:focus,.scribe-form select:focus,.scribe-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,146,63,.18)}
+.password-toggle{position:absolute;top:50%;right:4px;width:36px;height:36px;display:grid;place-items:center;transform:translateY(-50%);border:0;border-radius:50%;background:transparent;color:var(--ink-3);cursor:pointer}.password-toggle:hover{background:var(--block);color:var(--crimson)}.password-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.password-toggle .eye-slash{display:none}.password-toggle[aria-pressed="true"] .eye-slash{display:block}
+.gate-button,.scribe-button{border:1px solid #6f1717;border-radius:2px;background:var(--crimson);color:#fffdf7;padding:10px 16px;font:700 13px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer;box-shadow:0 2px 0 #5a1111}.gate-button:hover,.scribe-button:hover{background:#a52525}.gate-button:focus-visible,.scribe-button:focus-visible,.scribe-trigger:focus-visible,.scribe-close:focus-visible,.note-action:focus-visible,.password-toggle:focus-visible{outline:3px solid rgba(184,146,63,.58);outline-offset:2px}.gate-button:disabled{opacity:.65;cursor:wait}
+.gate-message{min-height:22px;margin:8px 0 0!important;font:14px var(--f-ui);color:var(--crimson)!important;text-align:center}.gate-foot{margin:20px auto 0!important;font:13px var(--f-ui);color:var(--ink-3)!important}.gate-foot span{display:block;padding:0}.gate-foot .gate-reality{margin-top:3px;color:var(--gold);white-space:nowrap;letter-spacing:.02em}
 .gate-unlock{position:absolute;z-index:3;display:grid;place-items:center;gap:6px;opacity:0;pointer-events:none;color:var(--page);text-align:center}.gate-unlock strong{font:600 clamp(25px,6vw,40px) var(--f-display);letter-spacing:.05em}.gate-unlock span{font:14px var(--f-sc);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
 .entry-gate.is-denied .gate-card{animation:ward-denied .38s ease}
 .entry-gate.is-unlocking .gate-card{animation:ward-card-away 1.05s cubic-bezier(.55,.05,.35,1) both}.entry-gate.is-unlocking .gate-unlock{animation:ward-reveal 1.05s ease both}.entry-gate.is-unlocking .gate-map{animation:ward-path .8s ease both}.entry-gate.is-unlocking .gate-die{animation:ward-die .8s cubic-bezier(.2,.75,.25,1) both}.entry-gate.is-unlocking .gate-ring.inner{animation:ward-ring .8s ease both}
@@ -254,7 +255,7 @@ body.gate-locked .scribe-trigger{display:none}
 .scribe-panel{width:min(520px,100%);height:100%;overflow:auto;background:var(--page);border-left:2px solid var(--gold);box-shadow:-24px 0 70px rgba(0,0,0,.3);transform:translateX(24px);transition:transform .28s ease;padding:28px clamp(20px,5vw,38px) 40px}.scribe-scrim.is-open .scribe-panel{transform:none}
 .scribe-head{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;padding-bottom:18px;border-bottom:1px solid var(--rule)}.scribe-head .eyebrow{margin-bottom:2px}.scribe-head h2{margin:0;color:var(--crimson);font-size:30px}.scribe-head p{margin:6px 0 0;color:var(--ink-2);font-size:16px}.scribe-close{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--ink-2);font:25px/1 var(--f-ui);cursor:pointer}.scribe-close:hover{background:var(--block)}
 .scribe-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.scribe-field.full{grid-column:1/-1}.scribe-form textarea{min-height:132px;resize:vertical;line-height:1.45}.scribe-form .scribe-button{justify-self:start}.scribe-status{align-self:center;margin:0;font:14px var(--f-ui);color:var(--ink-2)}
-.drafts{margin-top:28px;padding-top:20px;border-top:2px solid var(--gold)}.drafts-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.drafts h3{margin:0;color:var(--crimson);font-size:20px}.draft-empty{color:var(--ink-3);font-style:italic}.draft-list{display:grid;gap:12px;margin-top:12px}.draft-note{border:1px solid var(--rule);border-radius:3px;background:#fffdf7;padding:13px 14px}.draft-meta{display:flex;flex-wrap:wrap;gap:5px 10px;font:12px var(--f-sc);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}.draft-note p{margin:7px 0 10px;white-space:pre-wrap;font-size:16px;line-height:1.38}.draft-actions{display:flex;flex-wrap:wrap;gap:7px}.note-action{border:1px solid var(--rule);border-radius:2px;background:var(--page);color:var(--ink-2);padding:5px 9px;font:700 12px var(--f-ui);cursor:pointer}.note-action:hover{border-color:var(--gold);color:var(--crimson)}.note-action.danger:hover{border-color:var(--crimson)}
+.drafts{margin-top:28px;padding-top:20px;border-top:2px solid var(--gold)}.drafts-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.drafts h3{margin:0;color:var(--crimson);font-size:20px}.draft-empty{color:var(--ink-3);font-style:italic}.draft-list{display:grid;gap:12px;margin-top:12px}.draft-note{border:1px solid var(--rule);border-radius:3px;background:#fffdf7;padding:13px 14px}.draft-meta{display:flex;flex-wrap:wrap;gap:5px 10px;font:12px var(--f-sc);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}.draft-note p{margin:7px 0 10px;white-space:pre-wrap;font-size:16px;line-height:1.38}.draft-actions{display:flex;flex-wrap:wrap;gap:7px}.note-action{border:1px solid var(--rule);border-radius:2px;background:var(--page);color:var(--ink-2);padding:5px 9px;font:700 12px var(--f-ui);cursor:pointer}.note-action:hover{border-color:var(--gold);color:var(--crimson)}.note-action.danger:hover{border-color:var(--crimson)}.share-all-wrap{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}.share-all-notes{width:100%;min-height:44px}
 @media (max-width:620px){.gate-card{padding:32px 22px 26px}.gate-entry{grid-template-columns:1fr}.gate-button{min-height:44px}.scribe-trigger{width:48px;height:48px;justify-content:center;padding:0}.scribe-trigger>span:not(.scribe-count){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.scribe-panel{border-left:0}.scribe-form{grid-template-columns:1fr}.scribe-field.full{grid-column:auto}}
 /* restrained data motion: reveal once as each chart enters the viewport */
 @keyframes chapter-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
@@ -302,12 +303,17 @@ body.gate-locked .scribe-trigger{display:none}
     <form class="gate-form" id="entryForm">
       <label for="entryPhrase">Table phrase</label>
       <div class="gate-entry">
-        <input id="entryPhrase" name="entryPhrase" type="password" autocomplete="current-password" required aria-describedby="gateMessage">
+        <div class="password-field">
+          <input id="entryPhrase" name="entryPhrase" type="password" autocomplete="current-password" required aria-describedby="gateMessage">
+          <button class="password-toggle" id="entryVisibility" type="button" aria-label="Show table phrase" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.8"></circle><path class="eye-slash" d="m4 4 16 16"></path></svg>
+          </button>
+        </div>
         <button class="gate-button" type="submit">Enter the archive</button>
       </div>
-      <p class="gate-message" id="gateMessage" aria-live="polite">Ask the DM if the phrase has slipped your mind.</p>
+      <p class="gate-message" id="gateMessage" aria-live="polite">Ask the archivist if you rolled a natural 1 on your Intelligence check.</p>
     </form>
-    <p class="gate-foot">Remembered for this browser session <span>✦</span> A friendly ward, not a fortress</p>
+    <p class="gate-foot"><span>Remembered for this browser session</span><span class="gate-reality">✦ A friendly ward, not a fortress ✦</span></p>
   </section>
   <div class="gate-unlock" aria-hidden="true"><strong>The path is revealed</strong><span>Welcome back, adventurer</span></div>
 </div>
@@ -342,6 +348,7 @@ body.gate-locked .scribe-trigger{display:none}
     <section class="drafts" aria-labelledby="draftsTitle">
       <div class="drafts-head"><h3 id="draftsTitle">Notes in your satchel</h3></div>
       <div id="draftList" class="draft-list"></div>
+      <div class="share-all-wrap"><button class="scribe-button share-all-notes" id="shareAllNotes" type="button" hidden>Share all notes</button></div>
     </section>
   </aside>
 </div>
@@ -2024,7 +2031,7 @@ function sessions(){
  <p class="note" style="margin:10px 0 0">Tap any dot or trip banner to open its recap.</p>
  <div class="panel tlpanel" style="margin-top:8px;padding-bottom:30px">${years.map(row).join('')}<div class="pop" id="pop" role="dialog" aria-live="polite" hidden><button class="pop-x" aria-label="Close">×</button><div class="pop-body"></div></div></div>
  <section class="blk"><h2>The Gentlemen's Fantasy Getaways</h2><div class="grid">${trips}</div></section>
- <section class="blk"><details><summary>Every session as a table</summary><div class="scroll-x" style="margin-top:10px"><table class="tbl"><thead><tr><th>Date</th><th>Campaign</th><th>Recap</th></tr></thead><tbody>${tableRows}</tbody></table></div></details></section>`;
+ <section class="blk"><h2>Every Session as a Table</h2><div class="scroll-x" style="margin-top:10px"><table class="tbl"><thead><tr><th>Date</th><th>Campaign</th><th>Recap</th></tr></thead><tbody>${tableRows}</tbody></table></div></section>`;
 }
 function bindSessions(root){
  const panel=root.querySelector('.tlpanel'),pop=root.querySelector('#pop'),det=pop.querySelector('.pop-body');
@@ -2196,7 +2203,7 @@ show(location.hash.slice(1));
 
 /* ---------- warded entrance ---------- */
 const PASSCODE_SHA256='8a73f8e5406db387366e3239221bae582854cd3b5c305ccb7bb8655ccdd1ce3d';
-const entryGate=document.getElementById('entryGate'),entryForm=document.getElementById('entryForm'),entryPhrase=document.getElementById('entryPhrase'),gateMessage=document.getElementById('gateMessage');
+const entryGate=document.getElementById('entryGate'),entryForm=document.getElementById('entryForm'),entryPhrase=document.getElementById('entryPhrase'),entryVisibility=document.getElementById('entryVisibility'),gateMessage=document.getElementById('gateMessage');
 const protectedPage=[document.querySelector('.masthead'),document.querySelector('.nav'),main,document.getElementById('scribeOpen')].filter(Boolean);
 function setPageInert(value){protectedPage.forEach(el=>el.inert=value)}
 function gateSessionGet(){try{return sessionStorage.getItem('almanac-entry-granted')}catch{return null}}
@@ -2215,8 +2222,11 @@ function openArchive(skipAnimation=false){
 }
 setPageInert(true);
 if(gateSessionGet()==='v2')openArchive(true);else requestAnimationFrame(()=>entryPhrase.focus());
+entryVisibility.addEventListener('click',()=>{
+ const reveal=entryPhrase.type==='password';entryPhrase.type=reveal?'text':'password';entryVisibility.setAttribute('aria-pressed',String(reveal));entryVisibility.setAttribute('aria-label',reveal?'Hide table phrase':'Show table phrase');entryPhrase.focus();
+});
 entryForm.addEventListener('submit',async e=>{
- e.preventDefault();const button=entryForm.querySelector('button');button.disabled=true;gateMessage.textContent='The runes are listening…';
+ e.preventDefault();const button=entryForm.querySelector('button[type="submit"]');button.disabled=true;gateMessage.textContent='The runes are listening…';
  try{
   if(await phraseDigest(entryPhrase.value)===PASSCODE_SHA256){gateMessage.textContent='The ward recognizes you.';openArchive();return}
   entryGate.classList.remove('is-denied');void entryGate.offsetWidth;entryGate.classList.add('is-denied');gateMessage.textContent='The wards hold. Check the phrase and try again.';entryPhrase.select();
@@ -2228,7 +2238,7 @@ entryGate.addEventListener('animationend',e=>{if(e.animationName==='ward-denied'
 /* ---------- field notes ---------- */
 const NOTES_KEY='almanac-field-notes-v1',NAME_KEY='almanac-scribe-name-v1',FEEDBACK_EMAIL='designwick+almanac@gmail.com';
 const FIELD_NOTE_SECTIONS=[['sessions','Sessions & recaps','sessions'],['scheduling','Scheduling & dates','sessions'],['campaigns','Campaigns · General','table'],['shatterbane','Shatterbane','shatterbane'],['theseus','Starship Theseus','theseus'],['toa','Tomb of Annihilation','toa'],['cos','Curse of Strahd','cos']];
-const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),scribeCount=document.getElementById('scribeCount');
+const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),shareAllNotes=document.getElementById('shareAllNotes'),scribeCount=document.getElementById('scribeCount');
 let lastScribeFocus=null;
 scribeSection.innerHTML=FIELD_NOTE_SECTIONS.map(([id,label])=>`<option value="${id}">${esc(label)}</option>`).join('');
 try{scribeName.value=localStorage.getItem(NAME_KEY)||''}catch{}
@@ -2242,8 +2252,10 @@ function fieldNoteText(note){
  return `THE ADVENTURERS' ALMANAC — FIELD NOTE\nFrom: ${who}\nType: ${note.kind}\nChapter: ${sectionLabel(note.section)}\nPage: ${url}\nRecorded: ${new Date(note.created).toLocaleString()}\n\n${note.text}`;
 }
 function setScribeStatus(message){scribeStatus.textContent=message;window.clearTimeout(setScribeStatus.timer);setScribeStatus.timer=window.setTimeout(()=>{scribeStatus.textContent=''},3200)}
+function openFieldNoteEmail(subject,body){setScribeStatus('Opening your preferred email app…');window.location.href=`mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
 function renderNotes(){
  const notes=readNotes();scribeCount.textContent=notes.length||'';scribeCount.classList.toggle('has-notes',notes.length>0);
+ shareAllNotes.hidden=!notes.length;
  if(!notes.length){draftList.innerHTML='<p class="draft-empty">Your satchel is empty. Add a memory or correction above.</p>';return}
  draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}</div><p>${esc(note.text)}</p><div class="draft-actions"><button class="note-action" type="button" data-note-action="email">Share by email</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
 }
@@ -2263,7 +2275,10 @@ draftList.addEventListener('click',async e=>{
  const button=e.target.closest('[data-note-action]');if(!button)return;const card=button.closest('[data-note-id]'),notes=readNotes(),note=notes.find(n=>n.id===card.dataset.noteId);if(!note)return;
  if(button.dataset.noteAction==='delete'){writeNotes(notes.filter(n=>n.id!==note.id));renderNotes();setScribeStatus('Note discarded.');return}
  const subject=`[Almanac Field Note] ${note.kind} — ${sectionLabel(note.section)}`,body=fieldNoteText(note);
- setScribeStatus('Opening your preferred email app…');window.location.href=`mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+ openFieldNoteEmail(subject,body);
+});
+shareAllNotes.addEventListener('click',()=>{
+ const notes=readNotes();if(!notes.length)return;const count=`${notes.length} field note${notes.length===1?'':'s'}`,subject=`[Almanac Field Notes] ${count}`,body=notes.map(fieldNoteText).join('\n\n————————————\n\n');openFieldNoteEmail(subject,body);
 });
 renderNotes();
 </script>
