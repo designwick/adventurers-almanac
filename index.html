@@ -999,7 +999,7 @@ const SESS={
    "n": "Alex introduces the gang to Savage Worlds. Cobalt hacks the prison, letting the rest of the crew break out and escape.",
    "src": "Jason; texts (Voidman and Jimboy already exist by Dec 24, 2024)",
    "ep": "Episode 1",
-   "undated": "Date unknown (before Dec 2024)"
+   "undated": "Unknown"
   },
   {
    "d": "2025-01-02",
@@ -2167,13 +2167,13 @@ const THESEUS_EPISODE_DETAILS={
     `Voidman counters Cobalt’s still-active maneuvering thrusters, skims across the tops of the city’s skyscrapers, and searches for something solid enough to redirect the Theseus. With no room to stop and the planet’s gravity pulling them down, he deliberately clips the raised scepter of an enormous alien goddess statue.`,
     `The collision pivots the ship just enough to point its thrusters downward. The Theseus strikes the ground like a stone skipping across water, tears free of the planet’s gravity, and hurtles back toward space.`,
     `The metropolis suffers some damaged towers, one shattered religious monument, and almost certainly a few casualties—but it is not destroyed.`
-   ],image:{src:`assets/theseus/episode-3-cockpit.jpg`,alt:`The overgrown Theseus cockpit diving toward a sprawling city`,caption:`The last view before Voidman attempts the impossible.`,width:1456,height:971}},
+   ],image:{src:`assets/theseus/episode-3-cockpit.jpg`,alt:`The overgrown Theseus cockpit diving toward a sprawling city`,caption:`The last view before Voidman attempts the impossible.`,width:1456,height:971,beforeSection:true}},
    {title:`Aftermath`,paragraphs:[
     `As the Theseus returns to space, the dead fungal infestation disintegrates throughout the ship. The vessel is badly damaged, engineering is devastated, and S.T.E.V.E. remains scattered across the deck, but the ship and its crew have survived.`,
     `Their relief lasts only until they discover Jimboy. Although absent from the battle, he has acquired a disturbing new companion growing out of his cheek. The crew silently agrees that a trip to the medical bay is probably in order.`,
     `Elsewhere in the ruined engineering bay, the remains of S.T.E.V.E. raise their hands as if asking the only reasonable question left:`,
     `Did they win?`
-   ]}
+   ],image:{src:`assets/theseus/episode-3-dead-jimboy.png`,alt:`Jimboy in an orange flight suit with a fungal companion growing from his cheek`,caption:`Jimboy has acquired a disturbing new companion.`,width:1254,height:1254,kind:`portrait`}}
   ]
  }
 };
@@ -2181,7 +2181,7 @@ function episodeArt(image){if(!image)return'';return `<figure class="episode-art
 function episodeGallery(images){if(!images?.length)return'';return `<div class="episode-gallery">${images.map(episodeArt).join('')}</div>`}
 function theseusEpisodeDetail(s){const detail=THESEUS_EPISODE_DETAILS[s.ep],date=s.undated||fdate(s.d),summary=s.n||s.rest||'';
  if(!detail)return'';
- const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),gallery=episodeGallery(beat.images),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before?art:''}${gallery}</section>`}).join('');
+ const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),gallery=episodeGallery(beat.images),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `${beat.image?.beforeSection?art:''}<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before&&!beat.image.beforeSection?art:''}${gallery}</section>`}).join('');
  return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">${esc(s.ep)} dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(detail.dek)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div>${beats}<button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
 }
 function theseusEpisodeHeader(s){return `<span class="ep-head"><span class="ep-meta"><span class="ep-number">${esc(s.ep)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-title">${esc(s.title)}</span></span>`}
@@ -2375,7 +2375,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.2 · Last updated October 27, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.2.1 · Last updated October 27, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindTheseusEpisodes(document.getElementById('ch-theseus'));
 const tabs=document.getElementById('tabs'),sel=document.getElementById('tabsel');
