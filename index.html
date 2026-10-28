@@ -68,7 +68,7 @@ article.blk[id^="camp-"]+article.blk[id^="camp-"]{margin-top:72px;padding-top:44
 .cl-msg{display:grid;gap:2px}.cl-who{font-family:var(--f-sc);font-size:13px;letter-spacing:.05em}.cl-who span{color:var(--ink-3);margin-left:6px}
 .cl-b{border-left:3px solid;padding:4px 10px;background:var(--block);font-size:17px;line-height:1.35;width:fit-content;max-width:100%}
 .cl-div{text-align:center;font-family:var(--f-sc);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:10px 0 4px;display:flex;align-items:center;gap:10px}.cl-div::before,.cl-div::after{content:"";flex:1;border-top:1px solid var(--rule)}
-.colophon{margin:64px auto 0;max-width:72ch;text-align:center;font-family:var(--f-ui);font-size:13px;line-height:1.5;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+.colophon{margin:64px auto 0;max-width:72ch;text-align:center;font-family:var(--f-ui);font-size:13px;line-height:1.5;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}.colophon p{margin:0}.colophon .version{margin-top:5px;font-family:var(--f-sc);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .grid{display:grid;gap:20px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -139,9 +139,9 @@ article.blk[id^="camp-"]+article.blk[id^="camp-"]{margin-top:72px;padding-top:44
 .hours{display:grid;grid-template-columns:repeat(24,1fr);align-items:end;gap:2px;height:90px;border-bottom:1px solid var(--rule)}
 .hours div{border-radius:2px 2px 0 0;min-height:1px}
 .hourlab{display:flex;justify-content:space-between;font-family:var(--f-ui);font-size:12px;color:var(--ink-3);margin-top:4px}
-.rankrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.rankrow{display:grid;grid-template-columns:repeat(8,minmax(82px,1fr));gap:8px;overflow-x:auto;padding-bottom:6px}
 .rankrow div{border-left:2px solid var(--gold);padding:2px 0 2px 10px}
-.rankrow b{font-family:var(--f-display);font-size:24px;display:block;font-variant-numeric:tabular-nums}
+.rankrow b{font-family:var(--f-display);font-size:22px;display:block;font-variant-numeric:tabular-nums}
 .rankrow span{font-family:var(--f-sc);font-size:13px;letter-spacing:.05em;color:var(--ink-2)}
 .rankrow i{font-style:normal;font-family:var(--f-ui);font-size:12px;color:var(--ink-3);display:block}
 .emo{font-size:30px;letter-spacing:6px}
@@ -211,6 +211,11 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .ep-top{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;font-family:var(--f-sc);font-size:13px;letter-spacing:.05em;color:#fff}
 .ep-body{padding:10px 12px;font-size:16px;line-height:1.4}
 .ep-body p{margin:0}
+.theseus-strip{align-items:start}.ep-selectable{transition:border-color .18s ease,box-shadow .18s ease}.ep-selectable.is-open{grid-column:1/-1;border-color:var(--c-theseus);box-shadow:0 12px 28px rgba(42,31,23,.13)}
+.ep-select{appearance:none;display:block;width:100%;border:0;padding:0;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}.ep-select:focus-visible{outline:3px solid rgba(42,120,214,.38);outline-offset:-3px}.ep-select:hover .ep-summary{background:#f8f1df}
+.ep-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:9px 12px;background:var(--c-theseus);color:#fff}.ep-number,.ep-date{font:12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.ep-title{font:600 19px/1.2 var(--f-display);letter-spacing:.02em;text-align:center}.ep-summary{display:block;padding:12px 14px 11px;transition:background .18s ease}.ep-summary-copy{display:block;line-height:1.42}.ep-more{display:block;margin-top:9px;font:700 11px var(--f-sc);letter-spacing:.08em;text-transform:uppercase;color:var(--c-theseus)}
+.ep-detail[hidden]{display:none}.ep-detail{border-top:2px solid var(--gold);padding:26px clamp(16px,4vw,38px) 32px;background:#fffdf7;animation:chapter-enter .28s ease}.episode-detail-inner{max-width:78ch;margin:0 auto}.episode-detail-inner>h3{margin:2px 0 8px;color:var(--crimson);font-size:clamp(25px,4vw,34px)}.episode-dek{margin:0 0 24px;font-size:19px;line-height:1.48;color:var(--ink-2)}.episode-facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:16px 0;font:14px var(--f-ui);color:var(--ink-2)}.episode-facts b{color:var(--ink)}.episode-beat{margin-top:28px}.episode-beat h4{margin:0 0 8px;font:600 23px/1.2 var(--f-display);color:var(--crimson)}.episode-beat p{margin:0 0 12px;line-height:1.58}.episode-art{margin:18px 0 24px;border:1px solid var(--rule);background:var(--block);box-shadow:0 8px 20px rgba(42,31,23,.12)}.episode-art img{display:block;width:100%;height:auto}.episode-art.portrait{max-width:440px;margin-left:auto;margin-right:auto}.episode-art figcaption{padding:7px 10px;font:12px var(--f-ui);color:var(--ink-3);text-align:center}.episode-close{display:block;margin:30px auto 0;border:1px solid var(--c-theseus);border-radius:2px;background:transparent;color:var(--c-theseus);padding:8px 14px;font:700 12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.episode-close:hover{background:var(--c-theseus);color:#fff}.episode-close:focus-visible{outline:3px solid rgba(42,120,214,.35);outline-offset:2px}
+@media (max-width:640px){.ep-head{grid-template-columns:1fr auto}.ep-title{grid-column:1/-1;grid-row:2;text-align:left}.episode-dek{font-size:17px}.ep-detail{padding-left:14px;padding-right:14px}}
 .season{margin-top:18px}
 .season .eyebrow{margin-bottom:6px}
 footer{border-top:2px solid var(--gold);margin-top:56px;padding-top:16px}
@@ -2006,6 +2011,85 @@ function person(p){
 
 const recap=s=>{const r=s.rest||'';const body=s.title+(r?(/^[:,;.]/.test(r)?'':' ')+r:'');const end=/[.!?)"”]$/.test(body)?'':'.';return `<b>${esc(s.title)}</b>${r?(/^[:,;.]/.test(r)?'':' ')+esc(r):''}${s.n?end+' '+esc(s.n):''}`};
 const epCard=s=>`<article class="ep"><div class="ep-top" style="background:${CAMPS[s.c].color}"><span>${esc(s.ep||'')}</span><span>${s.undated?'Undated':fdate(s.d)}</span></div><div class="ep-body"><p>${recap(s)}</p></div></article>`;
+const THESEUS_EPISODE_DETAILS={
+ 'Episode 2':{
+  dek:`A black sphere, a six-car maglev and a crew spectacularly incapable of subtlety.`,
+  beats:[
+   {title:`The Job`,paragraphs:[
+    `In a quiet corner of a desert-world bar, arms dealer Tessa briefs the crew on what she insists should be a straightforward train job. A valuable black sphere is secured in car six of a maglev train. The crew will board in the public passenger compartment, car two, and must retrieve the sphere before reaching the next station.`,
+    `The train has heavy security, and the Silent Suns mercenary company may also be aboard. Tessa provides a code capable of detaching the caboose in an emergency. If the crew reaches the next station without using it or requiring rescue, they earn a bonus. Her confidence visibly erodes as Voidman struggles to follow the explanation.`
+   ],image:{src:`assets/theseus/episode-2-train.jpg`,alt:`A long armored maglev train crossing an orange-lit alien desert`,caption:`The target: six cars, heavy security and one very bad contingency plan.`,width:1456,height:816}},
+   {title:`Last-Minute Preparation`,paragraphs:[
+    `The crew has an hour before departure. S.T.E.V.E. polishes himself and makes no serious attempt to conceal his enormous mining laser. Jimboy tries to integrate the weapon into S.T.E.V.E.’s chassis but is defeated by the robot’s many enthusiastically opened compartments.`,
+    `Voidman decides his boots do not fit the occasion. He befriends a stranger, buys the man’s flame-decorated boots, exchanges contact information, and accidentally reveals wildly inaccurate fragments of the heist. Fortunately, the stranger assumes Voidman is describing a book.`
+   ],image:{src:`assets/theseus/episode-2-boots.jpg`,alt:`A pair of black futuristic boots glowing with orange lights`,caption:`Voidman’s magnificent and entirely mission-critical new boots.`,kind:`portrait`,width:900,height:900}},
+   {title:`Boarding the Train`,paragraphs:[
+    `The crew boards the passenger car among ordinary travelers, a stewardess, and four lightly armed train guards. Shifty attempts to charm the stewardess but is treated more like an excited child than a dangerous rogue. Voidman accepts a moist towel, reclines, and nearly forgets the mission.`,
+    `S.T.E.V.E. occupies an entire section with his mining laser, pinning a very thin alien passenger against the wall. The train lifts above its track and accelerates across the orange desert.`
+   ]},
+   {title:`Jimboy Takes Control`,paragraphs:[
+    `With only a short trip in which to cross four restricted cars, the crew needs a diversion. Jimboy quietly breaches the train’s control network. After several disastrous attempts, he finds an opening so clean that the system cannot detect his presence. He gains control over the doors, lights, communications, alarms, and other train systems.`,
+    `To unsettle the guards, Jimboy opens the rear exterior door while the train is moving at extreme speed. One guard nearly gets sucked outside. Jimboy kills the guards’ communications and lets their confusion spread.`,
+    `Voidman and S.T.E.V.E. manufacture a loud argument near the stewardess. Shifty persuades the final rear guard that the confrontation is about to become his career-ending disaster. Terrified of failing another performance review, the guard abandons his post.`
+   ]},
+   {title:`Escaping into the Cargo Car`,paragraphs:[
+    `Shifty slips through the unguarded rear door and discovers that the next car is a dark cargo compartment. Jimboy uses the train controls to seal the connector so the others can cross safely.`,
+    `The stewardess attempts to issue S.T.E.V.E. a shutdown command. The robot pretends to comply, falls directly onto her, and injures her. Voidman tries to help with such profound incompetence that he makes the situation worse.`,
+    `S.T.E.V.E. then reveals an improvised rocket system. With Voidman clinging to him, he blasts backward through the connector, collides with Jimboy, and carries the crew into the cargo car. Jimboy seals the doors behind them.`
+   ]},
+   {title:`A Cargo Car Full of Terrible Ideas`,paragraphs:[
+    `The lights reveal that the cargo car is packed with industrial barrels marked as explosive. Voidman explores the cargo and returns carrying a single-shot bazooka. He also steals a flammable-material warning sticker and wears it like a child displaying a prize.`,
+    `Jimboy lights a cigar while the crew considers its options. At the far door, he discovers that each train car’s lights, alarms, public-address system, and fire suppression can be controlled independently. The crew forms a plan: seal themselves away from the explosives, flood the next car with suppression gas, and breach it while its occupants are confused.`
+   ]},
+   {title:`The Silent Suns`,paragraphs:[
+    `The door opens onto the Silent Suns’ barracks car. Four mercenaries in black-and-gold armor are caught in the artificial fog. Two are disoriented, while two immediately draw their weapons.`,
+    `Shifty shoots first and kills one. Voidman wounds and staggers another. Jimboy throws his massive wrench into a third mercenary’s head. S.T.E.V.E. hurls an explosive barrel through the fog with enough force to remove the fourth man’s head without rupturing the barrel.`,
+    `One surviving mercenary recovers and shoots Shifty, leaving him wounded and shaken. Shifty’s return shot goes wide. Voidman charges through the fog, slides between the mercenary’s legs, and fires upward, splitting him open. Jimboy, exhilarated and terrified, flourishes his plasma torch and burns down the final enemy.`
+   ]},
+   {title:`Cleaning Up Badly`,paragraphs:[
+    `The crew confirms that the thrown barrel is still intact. Voidman claims a black-and-gold face mask from one of the bodies. S.T.E.V.E. uses his buzz saw to remove the remains still lodged inside it.`,
+    `Jimboy intercepts panicked train communications and impersonates a mechanic handling technical problems. The train guards immediately ask how he accessed their channel, so he disconnects.`,
+    `The crew jams the door behind them with a bent pipe. Rather than leave four bodies as evidence, they open the connector toward the next car and throw the dead mercenaries into the desert at speed.`
+   ]},
+   {title:`First-Class Dining`,paragraphs:[
+    `The next car is a first-class dining room filled with tuxedos, gowns, fine food, and a live quartet. The music stops when the gore-streaked crew enters carrying industrial weapons and a bazooka.`,
+    `Voidman announces that nobody should worry because he is also attractive, then strolls among the tables sampling strangers’ food. Shifty activates what S.T.E.V.E. calls his “charm protocol” and pretends to be checking on the guests’ dining experience. Jimboy plays with his plasma torch and accepts food delivered by Voidman.`,
+    `Voidman sees the most beautiful woman in the universe. Time seems to slow. In his mind, a spotlight appears and an eighties power ballad begins. He becomes convinced that destiny will bring them together again.`,
+    `At the door to car six, S.T.E.V.E. grows impatient and punches the access panel apart. Jimboy uses his control of the train to open the door anyway, then activates the dining car’s fire suppression system behind them.`
+   ]},
+   {title:`The Sphere`,paragraphs:[
+    `Car six is a vast, dark chamber. Lights awaken in sequence as the crew enters. At the center, a matte-black sphere floats inside a force field above a dais.`,
+    `Jimboy connects to the control system. His first attempt fails. A second incorrect input turns the room red, sounds an alarm, and opens a hidden wall.`
+   ]},
+   {title:`The Beast`,paragraphs:[
+    `A massive armored predator—part lion and part rhinoceros—charges from the compartment beyond. The crew throws an explosive barrel toward it and detonates the barrel with gunfire, wounding the creature.`,
+    `The beast mauls Shifty, who is already wounded from the mercenary fight. Voidman fires his bazooka. The shot initially veers wide, but Shifty manages to redirect the launcher just enough to drive the explosive into the monster. S.T.E.V.E. charges and drives his rotating saw into its horn and face.`,
+    `During the fight, Jimboy successfully drops the force field and retrieves the sphere. He retreats toward the dining car rather than press the small button embedded in its surface.`,
+    `The beast wounds S.T.E.V.E. Shifty fires while withdrawing, but his shots cannot penetrate its hide. Voidman tries to shove two grenades into the wound S.T.E.V.E. created. Instead, he accidentally throws both live grenades loose inside the room. The blasts injure Shifty again, leaving him barely standing.`,
+    `S.T.E.V.E. ends the fight by opening fire with his mining laser and continuing long after the creature is dead, reducing it to a perforated mass and making even his companions uncomfortable.`
+   ],image:{src:`assets/theseus/episode-2-beast.jpg`,alt:`A massive orange-furred armored rhinoceros-like predator inside a train car`,caption:`The sphere’s heavily armored—and deeply unfortunate—guardian.`,width:1456,height:816,before:true}},
+   {title:`The Button`,paragraphs:[
+    `With the sphere secured, the crew debates whether to press its only button. Possibilities include a weapon, a pizza-delivery system, or something catastrophically valuable. Voidman advocates democracy, becomes frightened by his own argument, and refuses to press it.`,
+    `The sphere passes between Jimboy, Voidman, and S.T.E.V.E. S.T.E.V.E. finally presses the button.`,
+    `The sphere emits an electromagnetic pulse. Every light goes out. The maglev field collapses beneath a train traveling roughly eight hundred miles per hour.`
+   ]},
+   {title:`The World’s Least Discreet Exit`,paragraphs:[
+    `The train slams onto the track and begins grinding across the desert. The wounded Shifty is thrown against the floor while the others grab for support. With the doors dead and the car disintegrating around them, the crew needs protection from the crash.`,
+    `They climb inside the corpse of the enormous beast and use it as a grotesque shock absorber. The carcass pinballs through the car until the train finally grinds to a halt.`,
+    `Covered in blood, slime, and grease, the crew crawls out. Passengers and guards emerge from the wreckage behind them. The crew runs down the track as the guards open fire.`,
+    `Tessa arrives in a hovering emergency rescue vehicle and hauls them aboard. The crew escapes with the sphere, although the hope of earning a discreet-exit bonus is comprehensively dead.`,
+    `As they fly away, Voidman looks back and sees the beautiful woman from the dining car. This time she sees him too: gore-covered, hanging heroically from the rescue craft, and still wearing his magnificent flame-decorated boots. Her final thought is that they are very nice boots.`
+   ]}
+  ]
+ }
+};
+function episodeArt(image){if(!image)return'';return `<figure class="episode-art${image.kind?' '+esc(image.kind):''}"><img src="${esc(image.src)}" alt="${esc(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"><figcaption>${esc(image.caption)}</figcaption></figure>`}
+function theseusEpisodeDetail(s){const detail=THESEUS_EPISODE_DETAILS[s.ep],date=s.undated||fdate(s.d),summary=s.n||s.rest||'';
+ if(!detail)return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">Episode dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(summary)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div><p class="note">The full story notes for this episode have not been added to the archive yet.</p><button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
+ const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before?art:''}</section>`}).join('');
+ return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">${esc(s.ep)} dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(detail.dek)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div>${beats}<button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
+}
+function theseusEpisodeCard(s){const id=`theseus-${s.ep.replace(/\D/g,'')}`,summary=s.n||s.rest||'';return `<article class="ep ep-selectable" data-episode="${esc(s.ep)}"><button class="ep-select" type="button" data-episode-toggle aria-expanded="false" aria-controls="${id}"><span class="ep-head"><span class="ep-number">${esc(s.ep)}</span><span class="ep-title">${esc(s.title)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ↓</span></span></button>${theseusEpisodeDetail(s)}</article>`}
 /* ---------- chapter: sessions ---------- */
 const tripSess=t=>SESS.sessions.filter(s=>s.s==='yes'&&s.d>=t.start&&s.d<=t.end);
 const tripRow=s=>`<li><span class="k">${D(s.d).toLocaleDateString('en-US',{weekday:'short'})}</span><span><span class="camp-pill" style="background:${CAMPS[s.c].color}">${CAMPS[s.c].name}${s.ep?' · '+esc(s.ep):''}</span><br>${recap(s)}</span></li>`;
@@ -2055,10 +2139,14 @@ function bindSessions(root){
 }
 
 function episodes(k){const eps=played.filter(s=>s.c===k).slice();if(!eps.length)return'';
- const strip=list=>`<div class="strip">${list.map(epCard).join('')}</div>`;
+ const strip=list=>`<div class="strip${k==='theseus'?' theseus-strip':''}">${list.map(k==='theseus'?theseusEpisodeCard:epCard).join('')}</div>`;
  if(k!=='shatterbane')return `<h2 style="margin-top:36px">Previously on ${CAMPS[k].name}</h2>${strip(eps)}`;
  const by={};eps.forEach(s=>{const n=s.ep.startsWith('Season 1')?1:+s.ep.slice(1,s.ep.indexOf(' '));(by[n]=by[n]||[]).push(s)});
  return `<h2 style="margin-top:36px">Previously on Shatterbane</h2>${Object.keys(by).sort((a,b)=>a-b).map(n=>`<div class="season"><div class="eyebrow">Season ${n} · ${by[n].length} episodes${n==1?' in the notes':''}</div>${strip(by[n])}</div>`).join('')}`}
+function bindTheseusEpisodes(root){
+ const setOpen=(card,open)=>{const toggle=card.querySelector('[data-episode-toggle]'),detail=card.querySelector('.ep-detail'),label=card.querySelector('.ep-more');card.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));detail.hidden=!open;label.textContent=open?'Close episode dossier ↑':'Open episode dossier ↓'};
+ root.addEventListener('click',e=>{const toggle=e.target.closest('[data-episode-toggle]'),close=e.target.closest('[data-episode-close]');if(toggle){const card=toggle.closest('.ep-selectable'),open=!card.classList.contains('is-open');root.querySelectorAll('.ep-selectable.is-open').forEach(other=>setOpen(other,false));setOpen(card,open);if(open)requestAnimationFrame(()=>card.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'nearest'}));return}if(close){const card=close.closest('.ep-selectable');setOpen(card,false);card.querySelector('[data-episode-toggle]').focus()}});
+}
 /* ---------- chapter: campaigns & D&D stats ---------- */
 function campaigns(){
  const tot=Object.values(campCount).reduce((a,b)=>a+b,0);
@@ -2189,8 +2277,9 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<p class="colophon">How this was made: Jason pieced this together with Claude in October 2026. The chat numbers come from an iPhone export of the group text, ${fdate(STATS.range[0])} to ${fdate(STATS.range[1])}. The session history merges the party's session log, two shared calendars and the group chat, and the recaps start from the log's one-line headlines, with a few details added from the texts.</p>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.1 · Last updated October 27, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
+bindTheseusEpisodes(document.getElementById('ch-theseus'));
 const tabs=document.getElementById('tabs'),sel=document.getElementById('tabsel');
 tabs.innerHTML=[...new Set(CH.map(c=>c[3]))].map(g=>`<span class="tg"><span class="tabgrp">${g}</span>${CH.filter(c=>c[3]===g).map(([id,l])=>`<a class="tab" href="#${id}" data-id="${id}">${l}</a>`).join('')}</span>`).join('');
 sel.innerHTML=[...new Set(CH.map(c=>c[3]))].map(g=>`<optgroup label="${g}">${CH.filter(c=>c[3]===g).map(([id,l])=>`<option value="${id}">${l}</option>`).join('')}</optgroup>`).join('');
@@ -2248,7 +2337,7 @@ function normalizedSection(){const id=location.hash.slice(1);if(FIELD_NOTE_SECTI
 function sectionInfo(id){return FIELD_NOTE_SECTIONS.find(s=>s[0]===id)||FIELD_NOTE_SECTIONS[0]}
 function sectionLabel(id){return sectionInfo(id)[1]}
 function fieldNoteText(note){
- const who=note.name||'Anonymous adventurer',url=`https://adventure.designwick.com/#${sectionInfo(note.section)[2]}`;
+ const who=note.name||'Anonymous adventurer',url=`https://almanac.designwick.com/#${sectionInfo(note.section)[2]}`;
  return `THE ADVENTURERS' ALMANAC — FIELD NOTE\nFrom: ${who}\nType: ${note.kind}\nChapter: ${sectionLabel(note.section)}\nPage: ${url}\nRecorded: ${new Date(note.created).toLocaleString()}\n\n${note.text}`;
 }
 function setScribeStatus(message){scribeStatus.textContent=message;window.clearTimeout(setScribeStatus.timer);setScribeStatus.timer=window.setTimeout(()=>{scribeStatus.textContent=''},3200)}
