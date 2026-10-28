@@ -213,9 +213,10 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .ep-body p{margin:0}
 .theseus-strip{align-items:start}.ep-selectable{transition:border-color .18s ease,box-shadow .18s ease}.ep-selectable.is-open{grid-column:1/-1;border-color:var(--c-theseus);box-shadow:0 12px 28px rgba(42,31,23,.13)}
 .ep-select{appearance:none;display:block;width:100%;border:0;padding:0;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}.ep-select:focus-visible{outline:3px solid rgba(42,120,214,.38);outline-offset:-3px}.ep-select:hover .ep-summary{background:#f8f1df}
-.ep-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:9px 12px;background:var(--c-theseus);color:#fff}.ep-number,.ep-date{font:12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.ep-title{font:600 19px/1.2 var(--f-display);letter-spacing:.02em;text-align:center}.ep-summary{display:block;padding:12px 14px 11px;transition:background .18s ease}.ep-summary-copy{display:block;line-height:1.42}.ep-more{display:block;margin-top:9px;font:700 11px var(--f-sc);letter-spacing:.08em;text-transform:uppercase;color:var(--c-theseus)}
+.ep-head{display:block;padding:9px 12px 10px;background:var(--c-theseus);color:#fff;text-align:left}.ep-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}.ep-number,.ep-date{font:12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.ep-title{display:block;overflow:hidden;font:600 19px/1.2 var(--f-display);letter-spacing:.02em;text-align:left;text-overflow:ellipsis;white-space:nowrap}.ep-summary{display:block;padding:12px 14px 11px;transition:background .18s ease}.ep-summary-copy{display:block;line-height:1.42}.ep-more{display:block;margin-top:9px;font:700 11px var(--f-sc);letter-spacing:.08em;text-transform:uppercase;color:var(--c-theseus)}
 .ep-detail[hidden]{display:none}.ep-detail{border-top:2px solid var(--gold);padding:26px clamp(16px,4vw,38px) 32px;background:#fffdf7;animation:chapter-enter .28s ease}.episode-detail-inner{max-width:78ch;margin:0 auto}.episode-detail-inner>h3{margin:2px 0 8px;color:var(--crimson);font-size:clamp(25px,4vw,34px)}.episode-dek{margin:0 0 24px;font-size:19px;line-height:1.48;color:var(--ink-2)}.episode-facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:16px 0;font:14px var(--f-ui);color:var(--ink-2)}.episode-facts b{color:var(--ink)}.episode-beat{margin-top:28px}.episode-beat h4{margin:0 0 8px;font:600 23px/1.2 var(--f-display);color:var(--crimson)}.episode-beat p{margin:0 0 12px;line-height:1.58}.episode-art{margin:18px 0 24px;border:1px solid var(--rule);background:var(--block);box-shadow:0 8px 20px rgba(42,31,23,.12)}.episode-art img{display:block;width:100%;height:auto}.episode-art.portrait{max-width:440px;margin-left:auto;margin-right:auto}.episode-art figcaption{padding:7px 10px;font:12px var(--f-ui);color:var(--ink-3);text-align:center}.episode-close{display:block;margin:30px auto 0;border:1px solid var(--c-theseus);border-radius:2px;background:transparent;color:var(--c-theseus);padding:8px 14px;font:700 12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.episode-close:hover{background:var(--c-theseus);color:#fff}.episode-close:focus-visible{outline:3px solid rgba(42,120,214,.35);outline-offset:2px}
-@media (max-width:640px){.ep-head{grid-template-columns:1fr auto}.ep-title{grid-column:1/-1;grid-row:2;text-align:left}.episode-dek{font-size:17px}.ep-detail{padding-left:14px;padding-right:14px}}
+.episode-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 24px}.episode-gallery .episode-art{margin:0}.episode-gallery .episode-art img{height:260px;object-fit:cover}.episode-gallery .episode-art.portrait{max-width:none}.ep-static .ep-summary{flex:1}
+@media (max-width:640px){.episode-dek{font-size:17px}.ep-detail{padding-left:14px;padding-right:14px}.episode-gallery{grid-template-columns:1fr}.episode-gallery .episode-art img{height:auto}.ep-date{white-space:normal;text-align:right}}
 .season{margin-top:18px}
 .season .eyebrow{margin-bottom:6px}
 footer{border-top:2px solid var(--gold);margin-top:56px;padding-top:16px}
@@ -2081,15 +2082,111 @@ const THESEUS_EPISODE_DETAILS={
     `As they fly away, Voidman looks back and sees the beautiful woman from the dining car. This time she sees him too: gore-covered, hanging heroically from the rescue craft, and still wearing his magnificent flame-decorated boots. Her final thought is that they are very nice boots.`
    ]}
   ]
+ },
+ 'Episode 3':{
+  dek:`A dreamlike fungal wilderness, a parasite-controlled ship and one desperate attempt to keep the Theseus from turning a city into a garden.`,
+  beats:[
+   {title:`The Fungal World`,paragraphs:[
+    `Shifty, Voidman, and Cobalt awaken in a vast alien forest filled with towering mushroom-like trees, drifting spores, floating bioluminescent creatures, and glowing streams. Their memories are hazy, but the ship’s elderly astrobiologist, Nadia, claims they were rendered unconscious while exploring a cave.`,
+    `Their equipment is no longer working, and the Theseus is nowhere in sight. Nadia believes James may be monitoring the planet’s interconnected fungal ecosystem from aboard the ship. If the crew can create a large enough disturbance, he might detect it and send help.`,
+    `Their first attempt involves cutting open tall bamboo-like growths so they will release their fruit. Voidman saws through one and discovers strangely colored strands inside—almost like bundles of wires. Hundreds of blue fruits spill onto the ground, only to be carried away by small scavenging creatures.`,
+    `Voidman pockets some of the growth’s residue after discovering that it makes excellent hair gel.`
+   ],image:{src:`assets/theseus/episode-3-alien-world.jpg`,alt:`A vast alien forest of giant mushrooms and floating bioluminescent creatures`,caption:`The world Nadia insists is real.`,width:1456,height:971,before:true},images:[
+    {src:`assets/theseus/episode-3-nadia-world.webp`,alt:`Nadia seated in a luminous fungal wilderness`,caption:`Nadia guides the crew through the fungal wilderness.`,width:1792,height:1024},
+    {src:`assets/theseus/episode-3-nadia.jpg`,alt:`Nadia in a blue exploration suit against a fungal forest`,caption:`Nadia, the Theseus’s astrobiologist—or something wearing her face.`,width:900,height:1350,kind:`portrait`}
+   ]},
+   {title:`Something in the Forest`,paragraphs:[
+    `While experimenting with the floating bioluminescent creatures, Voidman attracts a towering crab-like fungal monster. Rather than immediately attacking, it repeatedly reaches for his face. Voidman’s newly slicked hair allows him to slip free until Shifty, Cobalt, and Voidman bring it down with their weapons.`,
+    `Nadia warns that the creature can regenerate and instructs them to remove its head. Voidman spends several minutes laboriously sawing through the creature’s armored neck, somehow missing the much softer joint that would have made the job easy. Even after decapitation, the creature’s head begins growing new appendages and crawls after them.`,
+    `Nadia proposes a new plan. Large, balloon-like fruits absorb enormous quantities of water. By filling a glowing creek with them, the crew can dam its flow and extinguish a section of the forest’s bioluminescence, creating a dark patch visible from orbit.`,
+    `As the crew rolls the fruits into the water, the stream begins to dim. Voidman becomes increasingly distracted by the commercial possibilities of combining the fruits with his newfound hair gel.`,
+    `Then the world begins to malfunction.`,
+    `The stars have not moved. Animals produce bursts of static. Metallic noises seem to come from living things. The landscape flickers, momentarily replaced by darkness and the sound of an alarm.`,
+    `Worst of all, everyone’s face begins to itch.`
+   ],image:{src:`assets/theseus/episode-3-fungal-alien.jpg`,alt:`A towering crab-like fungal creature charging through an alien forest`,caption:`The regenerating creature stalking Voidman through the forest.`,width:900,height:1350}},
+   {title:`The Parasites`,paragraphs:[
+    `Voidman touches his face and discovers that it does not feel like a face. Something thick, bumpy, and malleable is wrapped around his head, although neither he nor the others can see it. Shifty feels the same invisible layer when Voidman forces his hand against it.`,
+    `Cobalt discovers that she has one as well. She presses her pistol against the unseen mass and fires, producing a shriek inside her own skull. The false world flickers away long enough for her to hear the emergency alarm aboard the Theseus.`,
+    `At Cobalt’s urging, Shifty shocks his own forehead with his baton. The pain disrupts the illusion completely. He claws at the creature covering his face and tears it free, pulling its tendrils from his eyes, sinuses, and skull.`,
+    `Shifty awakens in the engineering bay of the Theseus.`,
+    `The fungal planet never existed. The crew has been aboard the ship the entire time, hallucinating through parasites attached to their faces. Their effort to “disrupt the ecosystem” has actually devastated engineering. They have severed wiring, blasted holes through machinery, and thrown backup batteries into a furnace.`,
+    `The fungal monster they repeatedly attacked was S.T.E.V.E. He now lies dismembered across the bay, his head destroyed and his voice box barely connected, but he is still conscious enough to guide them.`,
+    `Voidman’s miraculous hair gel was a highly corrosive substance. Much of his hair comes away with it.`
+   ],image:{src:`assets/theseus/episode-3-face-parasite.jpg`,alt:`A red fungal parasite wrapped around a crew member’s face`,caption:`The illusion’s real architect.`,width:1456,height:1322,before:true},images:[
+    {src:`assets/theseus/episode-3-engineering.jpg`,alt:`The overgrown engineering bay after the hallucinating crew attacked it`,caption:`Engineering, after the crew’s efforts to “disrupt the ecosystem.”`,width:1456,height:971}
+   ]},
+   {title:`Waking the Others`,paragraphs:[
+    `Shifty attempts to disarm Cobalt and Voidman without being shot by companions who can neither see nor understand him. Cobalt begins recognizing the illusion’s inconsistencies, particularly when her hand passes straight through Nadia.`,
+    `Shifty removes Cobalt’s weakened parasite first. She awakens swinging, but quickly realizes what has happened. Voidman proves considerably more difficult. Still convinced he must carry the “fruits” to the “river,” he fights to keep his parasite attached while Cobalt and Shifty try to save him.`,
+    `After repeated blows to the head, a shock baton, several kicks to the groin, and a great deal of struggling, they finally pry the creature away. Voidman awakens in the ruined engineering bay with no idea how he got there.`,
+    `The false Nadia then appears as a hologram and warns them to leave the ship alone.`
+   ],image:{src:`assets/theseus/episode-3-nadia-hologram.jpg`,alt:`A threatening hologram of Nadia amid fungal growth`,caption:`The false Nadia drops the disguise.`,width:900,height:900}},
+   {title:`The Hive Aboard Theseus`,paragraphs:[
+    `From the remains of his voice box, S.T.E.V.E. explains that the Theseus has become a nightmare dreaming someone else’s dream.`,
+    `Weeks earlier, the ship recovered an apparently dormant escape pod. It was not dormant. A parasitic hive queen emerged from it and rooted herself in the cargo bay, spreading fungal growths throughout the vessel and taking control of its systems. The face parasites subdued the crew while the hive bent the ship to its will.`,
+    `The queen is now steering the Theseus toward a heavily populated planet. She intends to use the city below as another garden for her hive.`,
+    `Destroying the queen will destroy the hive mind, but the crew has only minutes before the Theseus reaches the metropolis.`
+   ],images:[
+    {src:`assets/theseus/episode-3-hull.jpg`,alt:`A sealed ship corridor consumed by fungal growth`,caption:`The hive has rooted itself throughout the Theseus.`,width:1456,height:971},
+    {src:`assets/theseus/episode-3-engine.jpg`,alt:`The Theseus engine chamber disappearing beneath fungal growth`,caption:`The ship’s systems disappear beneath the infestation.`,width:1456,height:971}
+   ]},
+   {title:`Fighting Through the Ship`,paragraphs:[
+    `The corridors are coated in fungal tissue, drifting spores, and pulsing growths. The crew battles several large hive creatures capable of scuttling across the walls and ceiling.`,
+    `They also encounter Keith, a cafeteria worker who has been horribly assimilated by the hive. Keith charges Voidman with a wrench and lands a devastating blow directly between his legs. Shifty answers with a perfectly placed laser shot between Keith’s eyes.`,
+    `While the others fight, Cobalt hacks into the navigation system. She confirms that the hive has seized nearly every major ship function and that the Theseus is hurtling directly toward the planet’s largest population center. She cannot retake full control, but she manages to gain access to several maneuvering thrusters.`,
+    `At the armory, Voidman keeps S.T.E.V.E.’s Gatling laser. Shifty finds a molecular de-atomizer capable of briefly transforming matter into antimatter. Cobalt takes a nearly depleted but still extremely powerful flamethrower.`,
+    `They also recover a pair of medical injectors after another face parasite launches itself from a cabinet and smacks harmlessly into Voidman’s oxygen mask.`
+   ],images:[
+    {src:`assets/theseus/episode-3-infected-crew.jpg`,alt:`An infected crew member holding a wrench in a dark corridor`,caption:`Keith, cafeteria worker and unwilling member of the hive.`,width:1456,height:971},
+    {src:`assets/theseus/episode-3-sporeling.jpg`,alt:`A small many-legged fungal parasite waiting in a ship corridor`,caption:`A face parasite waits in the armory.`,width:900,height:900}
+   ]},
+   {title:`The Cargo Bay`,paragraphs:[
+    `The cargo bay has become the diseased heart of the Theseus. Dead crewmembers have been absorbed into the walls, while the queen rises from the center of the chamber like a grotesque coral tree. Her swollen, vascular body has grown around the ancient pod that brought her aboard.`,
+    `Nadia’s hologram appears again and furiously orders them not to enter.`,
+    `Cobalt initially opens the exterior cargo doors while the inner doors remain sealed. The decompression tears infected crewmembers and loose debris into space and badly injures the queen, but she remains anchored to the floor by massive roots.`,
+    `The queen seals the bay against them. Shifty crawls through a ventilation shaft and quietly opens the mechanical locks from inside while Cobalt defeats the electronic locks. Together, they open the way into the chamber.`,
+    `Shifty fires the molecular de-atomizer into the queen. The temporary holes it creates reveal the truth inside her body: the recovered escape pod remains at her center, feeding power into a pulsating heart-like organ.`
+   ],image:{src:`assets/theseus/episode-3-cargo-bay.jpg`,alt:`A massive fungal hive queen rooted in the Theseus cargo bay`,caption:`The queen at the diseased heart of the ship.`,width:1456,height:971,before:true}},
+   {title:`Tearing Out the Queen`,paragraphs:[
+    `Cobalt hacks the ancient pod. Rather than merely cutting its power, she activates its launch rockets.`,
+    `The pod tries to escape from inside the queen.`,
+    `Its engines rip most of the queen’s roots from the deck and drive her against the ceiling. In retaliation, the hive shuts off the ship’s gravity. Everyone begins floating through the cargo bay as the queen lashes out with her tendrils and manipulates the Theseus around them.`,
+    `The queen captures Shifty and drags him into her closing mouth. Voidman realizes that he cannot accurately control S.T.E.V.E.’s Gatling laser, so he hurls the entire weapon into the queen’s jaws. The gun wedges her mouth open and gives Shifty something to brace himself against.`,
+    `Cobalt fires the ship’s maneuvering thrusters, wrenching more of the queen’s roots free. Shifty turns his de-atomizer inward and fires directly through several membranes into the queen’s heart.`,
+    `As the queen begins desperately cycling the ship’s systems, Cobalt throws her flamethrower’s fuel tank into the escape pod’s rocket exhaust. The resulting explosion incinerates the queen’s remaining roots and leaves her floating, burning and dismembered, in the weightless bay.`,
+    `The queen still refuses to die. She strikes Shifty with a final agonizing electrical lash as he struggles to escape.`,
+    `Voidman grabs a drifting maintenance Roomba, throws it toward the queen like a Frisbee, and accidentally lands it directly inside her open mouth. He shoots the Roomba, detonating its power source inside the queen and blasting apart her teeth, tongue, and internal organs.`,
+    `With everyone holding on to whatever they can find, Cobalt opens the exterior doors again. The queen and the remains of her hive are ripped from the cargo bay and hurled into space.`,
+    `Throughout the ship, the fungal growths turn white and begin crumbling into dust. The hive mind is dead.`
+   ]},
+   {title:`The Falling Ship`,paragraphs:[
+    `The victory comes too late to stop the Theseus from plummeting toward the city.`,
+    `The crew races to the bridge. Voidman leaves his magnetic boots attached to the ceiling and takes the pilot’s seat in his socks. The cockpit is almost entirely overgrown, and the city fills the cracked forward viewport.`,
+    `Shifty tries to help clear the controls and accidentally tears the primary steering column completely out of the console. Voidman is forced to fly from the unfamiliar copilot station while Cobalt feeds him navigation information.`,
+    `He immediately proves why he is the ship’s pilot.`,
+    `Voidman counters Cobalt’s still-active maneuvering thrusters, skims across the tops of the city’s skyscrapers, and searches for something solid enough to redirect the Theseus. With no room to stop and the planet’s gravity pulling them down, he deliberately clips the raised scepter of an enormous alien goddess statue.`,
+    `The collision pivots the ship just enough to point its thrusters downward. The Theseus strikes the ground like a stone skipping across water, tears free of the planet’s gravity, and hurtles back toward space.`,
+    `The metropolis suffers some damaged towers, one shattered religious monument, and almost certainly a few casualties—but it is not destroyed.`
+   ],image:{src:`assets/theseus/episode-3-cockpit.jpg`,alt:`The overgrown Theseus cockpit diving toward a sprawling city`,caption:`The last view before Voidman attempts the impossible.`,width:1456,height:971}},
+   {title:`Aftermath`,paragraphs:[
+    `As the Theseus returns to space, the dead fungal infestation disintegrates throughout the ship. The vessel is badly damaged, engineering is devastated, and S.T.E.V.E. remains scattered across the deck, but the ship and its crew have survived.`,
+    `Their relief lasts only until they discover Jimboy. Although absent from the battle, he has acquired a disturbing new companion growing out of his cheek. The crew silently agrees that a trip to the medical bay is probably in order.`,
+    `Elsewhere in the ruined engineering bay, the remains of S.T.E.V.E. raise their hands as if asking the only reasonable question left:`,
+    `Did they win?`
+   ]}
+  ]
  }
 };
 function episodeArt(image){if(!image)return'';return `<figure class="episode-art${image.kind?' '+esc(image.kind):''}"><img src="${esc(image.src)}" alt="${esc(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"><figcaption>${esc(image.caption)}</figcaption></figure>`}
+function episodeGallery(images){if(!images?.length)return'';return `<div class="episode-gallery">${images.map(episodeArt).join('')}</div>`}
 function theseusEpisodeDetail(s){const detail=THESEUS_EPISODE_DETAILS[s.ep],date=s.undated||fdate(s.d),summary=s.n||s.rest||'';
- if(!detail)return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">Episode dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(summary)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div><p class="note">The full story notes for this episode have not been added to the archive yet.</p><button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
- const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before?art:''}</section>`}).join('');
+ if(!detail)return'';
+ const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),gallery=episodeGallery(beat.images),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before?art:''}${gallery}</section>`}).join('');
  return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">${esc(s.ep)} dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(detail.dek)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div>${beats}<button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
 }
-function theseusEpisodeCard(s){const id=`theseus-${s.ep.replace(/\D/g,'')}`,summary=s.n||s.rest||'';return `<article class="ep ep-selectable" data-episode="${esc(s.ep)}"><button class="ep-select" type="button" data-episode-toggle aria-expanded="false" aria-controls="${id}"><span class="ep-head"><span class="ep-number">${esc(s.ep)}</span><span class="ep-title">${esc(s.title)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ↓</span></span></button>${theseusEpisodeDetail(s)}</article>`}
+function theseusEpisodeHeader(s){return `<span class="ep-head"><span class="ep-meta"><span class="ep-number">${esc(s.ep)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-title">${esc(s.title)}</span></span>`}
+function theseusEpisodeCard(s){const id=`theseus-${s.ep.replace(/\D/g,'')}`,summary=s.n||s.rest||'';return `<article class="ep ep-selectable" data-episode="${esc(s.ep)}"><button class="ep-select" type="button" data-episode-toggle aria-expanded="false" aria-controls="${id}">${theseusEpisodeHeader(s)}<span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ↓</span></span></button>${theseusEpisodeDetail(s)}</article>`}
+function theseusEpisodeStaticCard(s){const summary=s.n||s.rest||'';return `<article class="ep ep-static">${theseusEpisodeHeader(s)}<div class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span></div></article>`}
 /* ---------- chapter: sessions ---------- */
 const tripSess=t=>SESS.sessions.filter(s=>s.s==='yes'&&s.d>=t.start&&s.d<=t.end);
 const tripRow=s=>`<li><span class="k">${D(s.d).toLocaleDateString('en-US',{weekday:'short'})}</span><span><span class="camp-pill" style="background:${CAMPS[s.c].color}">${CAMPS[s.c].name}${s.ep?' · '+esc(s.ep):''}</span><br>${recap(s)}</span></li>`;
@@ -2139,7 +2236,8 @@ function bindSessions(root){
 }
 
 function episodes(k){const eps=played.filter(s=>s.c===k).slice();if(!eps.length)return'';
- const strip=list=>`<div class="strip${k==='theseus'?' theseus-strip':''}">${list.map(k==='theseus'?theseusEpisodeCard:epCard).join('')}</div>`;
+ const card=s=>k==='theseus'?(THESEUS_EPISODE_DETAILS[s.ep]?theseusEpisodeCard(s):theseusEpisodeStaticCard(s)):epCard(s);
+ const strip=list=>`<div class="strip${k==='theseus'?' theseus-strip':''}">${list.map(card).join('')}</div>`;
  if(k!=='shatterbane')return `<h2 style="margin-top:36px">Previously on ${CAMPS[k].name}</h2>${strip(eps)}`;
  const by={};eps.forEach(s=>{const n=s.ep.startsWith('Season 1')?1:+s.ep.slice(1,s.ep.indexOf(' '));(by[n]=by[n]||[]).push(s)});
  return `<h2 style="margin-top:36px">Previously on Shatterbane</h2>${Object.keys(by).sort((a,b)=>a-b).map(n=>`<div class="season"><div class="eyebrow">Season ${n} · ${by[n].length} episodes${n==1?' in the notes':''}</div>${strip(by[n])}</div>`).join('')}`}
@@ -2277,7 +2375,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.1 · Last updated October 27, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.2 · Last updated October 27, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindTheseusEpisodes(document.getElementById('ch-theseus'));
 const tabs=document.getElementById('tabs'),sel=document.getElementById('tabsel');
