@@ -186,9 +186,13 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .tripcard .tx{padding:18px 20px;display:grid;gap:8px;align-content:start}
 @media (max-width:720px){.tripcard{grid-template-columns:1fr}}
 /* campaign */
-.banner{position:relative;aspect-ratio:16/6;border:1px solid var(--rule);overflow:hidden;background:var(--block)}
+.banner{position:relative;aspect-ratio:16/6;border:1px solid var(--rule);overflow:visible;background:var(--block)}
 .banner img{width:100%;height:100%;object-fit:cover;display:block}
 .banner .ph span{font-size:22px;letter-spacing:.08em}
+.campaign-banner{margin-bottom:20px}
+.campaign-banner::after{content:"";position:absolute;z-index:1;left:-12px;bottom:8px;width:12px;height:12px;clip-path:polygon(0 0,100% 0,100% 100%);background:var(--campaign-color,var(--crimson));filter:brightness(.58) drop-shadow(0 2px 2px rgba(42,31,23,.22))}
+.campaign-bookmark{position:absolute;z-index:2;left:-12px;bottom:20px;width:max-content;max-width:calc(100% - 18px);margin:0;padding:11px 43px 12px 22px;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%);background:var(--campaign-color,var(--crimson));color:#fffdf7;font:600 clamp(20px,3.4vw,31px)/1.12 var(--f-display);letter-spacing:.025em;filter:drop-shadow(0 5px 6px rgba(42,31,23,.28))}
+.campaign-bookmark::before{content:"";position:absolute;inset:4px 25px 4px 4px;border:1px solid rgba(255,253,247,.32);pointer-events:none}
 .rolelist{display:flex;flex-wrap:wrap;gap:10px}
 .role{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border:1px solid;border-radius:20px;background:var(--page);font-family:var(--f-ui);font-size:15px;color:var(--ink);text-decoration:none}
 .role:hover{background:var(--block)}
@@ -197,6 +201,11 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .npcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px}
 .npcs.small{grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}.npcs.small .cn{font-size:13px;line-height:1.2}
 .npcs .char .cn{font-size:12px}
+.toa-party{grid-template-columns:repeat(auto-fill,minmax(138px,1fr))}
+.notable-details{margin-top:32px;border-top:2px solid var(--gold);border-bottom:1px solid var(--rule);background:rgba(255,253,247,.48)}
+.notable-details>summary{display:flex;align-items:center;justify-content:space-between;gap:18px;list-style:none;padding:14px 4px;color:var(--crimson);font:600 24px/1.2 var(--f-display);letter-spacing:.02em}
+.notable-details>summary::-webkit-details-marker{display:none}.notable-details>summary::after{content:"+";flex:0 0 auto;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--rule);border-radius:50%;font:20px/1 var(--f-ui);color:var(--ink-2)}.notable-details[open]>summary::after{content:"−"}
+.toa-notables{grid-template-columns:repeat(auto-fill,minmax(92px,128px));gap:14px;padding:5px 4px 20px}.toa-notables .char .cn{font-size:13px}.toa-notables .char .cs{font-size:11px}
 /* hall */
 .facts{display:grid;gap:12px}.facts div{display:grid;gap:0}.facts .big{font-family:var(--f-display);font-size:26px;line-height:1.1;color:var(--ink)}.facts span{color:var(--ink-2);font-size:16px}
 .fame{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
@@ -211,11 +220,12 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .ep-top{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;font-family:var(--f-sc);font-size:13px;letter-spacing:.05em;color:#fff}
 .ep-body{padding:10px 12px;font-size:16px;line-height:1.4}
 .ep-body p{margin:0}
-.theseus-strip{align-items:start}.ep-selectable{transition:border-color .18s ease,box-shadow .18s ease}.ep-selectable.is-open{grid-column:1/-1;border-color:var(--c-theseus);box-shadow:0 12px 28px rgba(42,31,23,.13)}
+.theseus-strip{align-items:start}.ep-selectable{transition:border-color .18s ease,box-shadow .18s ease}.ep-selectable.is-open{grid-column:1/-1;border-color:var(--episode-color,var(--c-theseus));box-shadow:0 12px 28px rgba(42,31,23,.13)}
 .ep-select{appearance:none;display:block;width:100%;border:0;padding:0;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}.ep-select:focus-visible{outline:3px solid rgba(42,120,214,.38);outline-offset:-3px}.ep-select:hover .ep-summary{background:#f8f1df}
-.ep-head{display:block;padding:9px 12px 10px;background:var(--c-theseus);color:#fff;text-align:left}.ep-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}.ep-number,.ep-date{font:12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.ep-title{display:block;overflow:hidden;font:600 19px/1.2 var(--f-display);letter-spacing:.02em;text-align:left;text-overflow:ellipsis;white-space:nowrap}.ep-summary{display:block;padding:12px 14px 11px;transition:background .18s ease}.ep-summary-copy{display:block;line-height:1.42}.ep-more{display:block;margin-top:9px;font:700 11px var(--f-sc);letter-spacing:.08em;text-transform:uppercase;color:var(--c-theseus)}
-.ep-detail[hidden]{display:none}.ep-detail{border-top:2px solid var(--gold);padding:26px clamp(16px,4vw,38px) 32px;background:#fffdf7;animation:chapter-enter .28s ease}.episode-detail-inner{max-width:78ch;margin:0 auto}.episode-detail-inner>h3{margin:2px 0 8px;color:var(--crimson);font-size:clamp(25px,4vw,34px)}.episode-dek{margin:0 0 24px;font-size:19px;line-height:1.48;color:var(--ink-2)}.episode-facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:16px 0;font:14px var(--f-ui);color:var(--ink-2)}.episode-facts b{color:var(--ink)}.episode-beat{margin-top:28px}.episode-beat h4{margin:0 0 8px;font:600 23px/1.2 var(--f-display);color:var(--crimson)}.episode-beat p{margin:0 0 12px;line-height:1.58}.episode-art{margin:18px 0 24px;border:1px solid var(--rule);background:var(--block);box-shadow:0 8px 20px rgba(42,31,23,.12)}.episode-art img{display:block;width:100%;height:auto}.episode-art.portrait{max-width:440px;margin-left:auto;margin-right:auto}.episode-art figcaption{padding:7px 10px;font:12px var(--f-ui);color:var(--ink-3);text-align:center}.episode-close{display:block;margin:30px auto 0;border:1px solid var(--c-theseus);border-radius:2px;background:transparent;color:var(--c-theseus);padding:8px 14px;font:700 12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.episode-close:hover{background:var(--c-theseus);color:#fff}.episode-close:focus-visible{outline:3px solid rgba(42,120,214,.35);outline-offset:2px}
-.episode-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 24px}.episode-gallery .episode-art{margin:0}.episode-gallery .episode-art img{height:260px;object-fit:cover}.episode-gallery .episode-art.portrait{max-width:none}.ep-static .ep-summary{flex:1}
+.ep-head{display:flex;min-height:86px;flex-direction:column;padding:9px 12px 10px;background:var(--episode-color,var(--c-theseus));color:#fff;text-align:left}.ep-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:5px}.ep-number,.ep-date{font:12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.ep-title{display:block;font:600 17px/1.16 var(--f-display);letter-spacing:.015em;text-align:left;white-space:normal}.ep-summary{display:block;padding:12px 14px 11px;transition:background .18s ease}.ep-summary-copy{display:block;line-height:1.42}.ep-more{display:block;margin-top:9px;font:700 11px var(--f-sc);letter-spacing:.08em;text-transform:uppercase;color:var(--episode-color,var(--c-theseus))}
+.toa-strip{align-items:stretch}.toa-drawer-card{height:310px}.toa-drawer-card .ep-select{display:flex;height:100%;flex-direction:column}.toa-drawer-card .ep-summary{display:flex;min-height:0;flex:1;flex-direction:column}.toa-drawer-card .ep-more{margin-top:auto;padding-top:10px}
+.ep-detail[hidden]{display:none}.ep-detail{border-top:2px solid var(--gold);padding:26px clamp(16px,4vw,38px) 32px;background:#fffdf7;animation:chapter-enter .28s ease}.episode-detail-inner{max-width:78ch;margin:0 auto}.episode-detail-inner>h3{margin:2px 0 8px;color:var(--crimson);font-size:clamp(25px,4vw,34px)}.episode-dek{margin:0 0 24px;font-size:19px;line-height:1.48;color:var(--ink-2)}.episode-facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:16px 0;font:14px var(--f-ui);color:var(--ink-2)}.episode-facts b{color:var(--ink)}.episode-beat{margin-top:28px}.episode-beat h4{margin:0 0 8px;font:600 23px/1.2 var(--f-display);color:var(--crimson)}.episode-beat p{margin:0 0 12px;line-height:1.58}.episode-art{margin:18px 0 24px;border:1px solid var(--rule);background:var(--block);box-shadow:0 8px 20px rgba(42,31,23,.12)}.episode-art img{display:block;width:100%;height:auto}.episode-art.portrait{max-width:440px;margin-left:auto;margin-right:auto}.episode-art figcaption{padding:7px 10px;font:12px var(--f-ui);color:var(--ink-3);text-align:center}.episode-close{display:block;margin:30px auto 0;border:1px solid var(--episode-color,var(--c-theseus));border-radius:2px;background:transparent;color:var(--episode-color,var(--c-theseus));padding:8px 14px;font:700 12px var(--f-sc);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.episode-close:hover{background:var(--episode-color,var(--c-theseus));color:#fff}.episode-close:focus-visible{outline:3px solid rgba(42,120,214,.35);outline-offset:2px}
+.episode-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 24px}.episode-gallery .episode-art{margin:0}.episode-gallery .episode-art img{height:260px;object-fit:cover}.episode-gallery .episode-art.portrait{max-width:none}.episode-gallery .episode-art.contain img{object-fit:contain;background:#20231d}.ep-static .ep-summary{flex:1}
 @media (max-width:640px){.episode-dek{font-size:17px}.ep-detail{padding-left:14px;padding-right:14px}.episode-gallery{grid-template-columns:1fr}.episode-gallery .episode-art img{height:auto}.ep-date{white-space:normal;text-align:right}}
 .season{margin-top:18px}
 .season .eyebrow{margin-bottom:6px}
@@ -262,7 +272,12 @@ body.gate-locked .scribe-trigger{display:none}
 .scribe-head{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;padding-bottom:18px;border-bottom:1px solid var(--rule)}.scribe-head .eyebrow{margin-bottom:2px}.scribe-head h2{margin:0;color:var(--crimson);font-size:30px}.scribe-head p{margin:6px 0 0;color:var(--ink-2);font-size:16px}.scribe-close{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--ink-2);font:25px/1 var(--f-ui);cursor:pointer}.scribe-close:hover{background:var(--block)}
 .scribe-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.scribe-field.full{grid-column:1/-1}.scribe-form textarea{min-height:132px;resize:vertical;line-height:1.45}.scribe-form .scribe-button{justify-self:start}.scribe-status{align-self:center;margin:0;font:14px var(--f-ui);color:var(--ink-2)}
 .drafts{margin-top:28px;padding-top:20px;border-top:2px solid var(--gold)}.drafts-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.drafts h3{margin:0;color:var(--crimson);font-size:20px}.draft-empty{color:var(--ink-3);font-style:italic}.draft-list{display:grid;gap:12px;margin-top:12px}.draft-note{border:1px solid var(--rule);border-radius:3px;background:#fffdf7;padding:13px 14px}.draft-meta{display:flex;flex-wrap:wrap;gap:5px 10px;font:12px var(--f-sc);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}.draft-note p{margin:7px 0 10px;white-space:pre-wrap;font-size:16px;line-height:1.38}.draft-actions{display:flex;flex-wrap:wrap;gap:7px}.note-action{border:1px solid var(--rule);border-radius:2px;background:var(--page);color:var(--ink-2);padding:5px 9px;font:700 12px var(--f-ui);cursor:pointer}.note-action:hover{border-color:var(--gold);color:var(--crimson)}.note-action.danger:hover{border-color:var(--crimson)}.share-all-wrap{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}.share-all-notes{width:100%;min-height:44px}
-@media (max-width:620px){.gate-card{padding:32px 22px 26px}.gate-entry{grid-template-columns:1fr}.gate-button{min-height:44px}.scribe-trigger{width:48px;height:48px;justify-content:center;padding:0}.scribe-trigger>span:not(.scribe-count){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.scribe-panel{border-left:0}.scribe-form{grid-template-columns:1fr}.scribe-field.full{grid-column:auto}}
+/* Tomb of Annihilation dossier drawer: a left-side prototype */
+.toa-dossier-scrim{position:fixed;z-index:145;inset:0;display:flex;justify-content:flex-start;background:rgba(31,22,17,.58);backdrop-filter:blur(3px);opacity:0;transition:opacity .2s ease}.toa-dossier-scrim[hidden]{display:none}.toa-dossier-scrim.is-open{opacity:1}
+.toa-dossier-panel{width:min(720px,94vw);height:100%;overflow:auto;overscroll-behavior:contain;background:#fffdf7;border-right:2px solid var(--gold);box-shadow:24px 0 70px rgba(0,0,0,.32);transform:translateX(-36px);transition:transform .3s cubic-bezier(.22,.75,.22,1)}.toa-dossier-scrim.is-open .toa-dossier-panel{transform:none}
+.toa-dossier-bar{position:sticky;z-index:3;top:0;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px clamp(20px,5vw,38px);border-bottom:1px solid var(--rule);background:rgba(251,246,234,.96);backdrop-filter:blur(8px)}.toa-dossier-bar .eyebrow{margin:0 0 3px;color:var(--c-toa)}.toa-dossier-campaign{color:var(--crimson);font:700 clamp(32px,5vw,38px)/1.04 var(--f-display);letter-spacing:.02em}.toa-dossier-close{flex:0 0 auto;width:38px;height:38px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--ink-2);font:26px/1 var(--f-ui);cursor:pointer}.toa-dossier-close:hover{border-color:var(--c-toa);background:var(--block);color:var(--c-toa)}.toa-dossier-close:focus-visible{outline:3px solid rgba(31,143,83,.28);outline-offset:2px}
+.toa-dossier-content{padding:30px clamp(22px,6vw,54px) 48px}.toa-dossier-content .episode-detail-inner{max-width:68ch}.toa-dossier-content .episode-detail-inner>h3{font-size:clamp(28px,5vw,40px)}.toa-dossier-content .episode-close{border-color:var(--c-toa);color:var(--c-toa)}.toa-dossier-content .episode-close:hover{background:var(--c-toa);color:#fff}.toa-drawer-card .ep-more{color:var(--c-toa)}
+@media (max-width:620px){.gate-card{padding:32px 22px 26px}.gate-entry{grid-template-columns:1fr}.gate-button{min-height:44px}.scribe-trigger{width:48px;height:48px;justify-content:center;padding:0}.scribe-trigger>span:not(.scribe-count){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.scribe-panel{border-left:0}.scribe-form{grid-template-columns:1fr}.scribe-field.full{grid-column:auto}.toa-dossier-panel{width:100%;max-width:none;border-right:0}.toa-dossier-content{padding-left:18px;padding-right:18px}.toa-dossier-bar{padding-left:18px;padding-right:18px}.toa-dossier-campaign{font-size:27px}.toa-drawer-card{height:auto;min-height:270px}}
 /* restrained data motion: reveal once as each chart enters the viewport */
 @keyframes chapter-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 .chapter.chapter-enter{animation:chapter-enter .24s ease-out both}
@@ -333,6 +348,16 @@ body.gate-locked .scribe-trigger{display:none}
 </nav>
 <main class="wrap" id="main"></main>
 <div id="tip" role="tooltip"></div>
+
+<div class="toa-dossier-scrim" id="toaDossierScrim" hidden>
+  <aside class="toa-dossier-panel" id="toaDossierPanel" role="dialog" aria-modal="true" aria-labelledby="toaDossierTitle">
+    <div class="toa-dossier-bar">
+      <div><div class="eyebrow" id="toaDossierKicker">Season 1 · Episode</div><div class="toa-dossier-campaign" id="toaDossierTitle">Tomb of Annihilation</div></div>
+      <button class="toa-dossier-close" id="toaDossierClose" type="button" aria-label="Close episode dossier">×</button>
+    </div>
+    <div class="toa-dossier-content" id="toaDossierContent"></div>
+  </aside>
+</div>
 
 <button class="scribe-trigger" id="scribeOpen" type="button" aria-haspopup="dialog" aria-controls="scribeScrim">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3c-5 .4-9.3 3-12.5 7.2C5.7 12.6 5 15 5 18l-2 3 3-2c2.6 0 5-.8 7.1-2.5C17.3 13.2 19.6 8.7 20 3Z"></path><path d="m6 18 8-8"></path></svg>
@@ -1509,7 +1534,7 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "Session 0: the expedition assembles",
+   "title": "The Expedition Assembles",
    "n": "New Tomb of Annihilation characters were revealed, including Sha'Wayne and Framboust, who rides an ostrich. Mark had to head out before the big reveal.",
    "src": "Texts",
    "ep": "Session 0",
@@ -1544,12 +1569,12 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "The gang sails to Chult, a guy loses his head to a cannonball",
+   "title": "Welcome to Chult, Mind Your Head",
    "n": "The expedition's first session, played in person in Dallas. The man who lost his head was Framboust, Jason's character.",
    "src": "Session log + texts",
    "undated": "",
    "ep": "Episode 1",
-   "rest": ", and Sha'Wayne tanks a zombie T-Rex alone"
+   "rest": ""
   },
   {
    "d": "2026-06-13",
@@ -1590,12 +1615,12 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "The gang loots an abandoned fort",
+   "title": "Camp Righteous",
    "n": "Father Nalu barely made it to the canoe.",
    "src": "Session log + texts",
    "undated": "",
    "ep": "Episode 2",
-   "rest": "and finds orders to hunt down the Jungle Spears"
+   "rest": ""
   },
   {
    "d": "2026-07-30",
@@ -1612,12 +1637,12 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "The gang watches Bluey go blind from Sight Rot",
+   "title": "Bluey Can't See Straight",
    "n": "Moved to a Friday. Matt G's level-3 paladin may have overused Rebuke the Violent, and Bluey accidentally killed a velociraptor. The last messages went out at 1:27am.",
    "src": "Session log + texts",
    "undated": "",
    "ep": "Episode 3",
-   "rest": "and cure it with a bedtime story"
+   "rest": ""
   },
   {
    "d": "2026-08-21",
@@ -1649,6 +1674,18 @@ const SESS={
    "n": "Desperate for a replacement part, the crew races rival scavengers into a derelict spaceship, where malfunctioning defenses and a mysterious djinn threaten everyone. The djinn turns out to be a projection of Dottie Dreamsong, the Sparkling Storytime Friend, and Kessler walks away with Dottie in his inventory.",
    "src": "Jason; texts",
    "ep": "Episode 8",
+   "undated": ""
+  },
+  {
+   "d": "2026-10-29",
+   "s": "yes",
+   "c": "toa",
+   "dm": "Alex",
+   "title": "An Audience with Zalira Amaku",
+   "rest": "",
+   "n": "Zalira rewards the party with a Bag of Tricks and a golden marker, then offers a new bounty: bring her a legendary golden-feathered tyrannosaur alive.",
+   "src": "Session recording + Granola transcript",
+   "ep": "Episode 4",
    "undated": ""
   }
  ],
@@ -1754,7 +1791,7 @@ const CHARS=[
  {n:'Jimboy',c:'theseus',p:'Matt G',img:'jimboy',sub:'Cloned once; came back with vampire teeth',drop:'Jimboy'},
  {n:'Shifty',c:'theseus',p:'Mark',img:'shifty',drop:'Shifty'},
  {n:'Nine',c:'toa',p:'Jason',img:'nine',drop:'Nine'},
- {n:'Framboust',c:'toa',p:'Jason',img:'framboust',sub:'Rode an ostrich',dead:true,drop:'Framboust'},
+ {n:'Framboust',c:'toa',p:'Jason',img:'framboust',dead:true,drop:'Framboust'},
  {n:"Sha'Wayne",c:'toa',p:'Kessler',img:'shawayne',sub:'Goliath Bard',drop:"Sha'Wayne"},
  {n:'Bluey',c:'toa',p:'Mark',img:'bluey',sub:'Cornelius Redmond III, Gloom Stalker Ranger',drop:'Bluey'},
  {n:'Father Nalu',c:'toa',p:'Matt G',img:'father-nalu',drop:'Father Nalu'},
@@ -1762,6 +1799,16 @@ const CHARS=[
  {n:'Kheram',c:'cos',p:'Mark',img:'kheram',sub:'Bull-folk Cleric',drop:'Kheram'},
  {n:'Kundo',c:'cos',p:'Matt G',img:'kundo',sub:'Aasimar Sorcerer',drop:'Kundo'},
  {n:'Marlowe',c:'cos',p:'Kessler',img:'marlowe',sub:'Halfling Artificer',drop:'Marlowe'}
+];
+const TOA_NOTABLES=[
+ {n:'Zalira Amaku',asset:'assets/toa/zalira-amaku.png',pos:'50% 24%',sub:'Queen of Beasts'},
+ {n:'Captain Bertram Holloway',asset:'assets/toa/captain-bertram-holloway.jpg',pos:'50% 23%'},
+ {n:'Auntie Boma',asset:'assets/toa/auntie-boma.jpg',pos:'50% 22%'},
+ {n:'Professor Jeb',asset:'assets/toa/professor-jeb.jpg',pos:'50% 21%'},
+ {n:'Nalabako',sub:'Merchant and outfitter'},
+ {n:"Kesharo N'goma",sub:'Temple contact'},
+ {n:'Trades in Good Fortune',sub:'Missing Tabaxi guide'},
+ {n:'Framboust',img:'framboust',dead:true}
 ];
 const NPCS=[
  {n:"Zan-Dar",c:"shatterbane",img:"sb-zan-dar",k:"Zandar"},
@@ -1846,6 +1893,7 @@ const fdate=s=>D(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pic=(img,name,dead)=>`<div class="pic">${img?`<img src="${IMGDATA[img]}" alt="${esc(name)}" loading="lazy">`:`<div class="ph"><span>${esc(name[0])}</span><em>Portrait to come</em></div>`}${dead?'<span class="tag-dead">Fallen</span>':''}</div>`;
 const charCard=(c,showPlayer)=>`<div class="char">${pic(c.img,c.n,c.dead)}<div class="cn">${esc(c.n)}</div><div class="cs">${showPlayer?esc(c.p)+(c.sub?' · ':''):''}${esc(c.sub||'')}</div></div>`;
+const notableCard=n=>`<div class="char">${n.asset?`<div class="pic"><img src="${esc(n.asset)}" alt="${esc(n.n)}" loading="lazy" style="object-position:${esc(n.pos||'50% 50%')}">${n.dead?'<span class="tag-dead">Fallen</span>':''}</div>`:pic(n.img,n.n,n.dead)}<div class="cn">${esc(n.n)}</div>${n.sub?`<div class="cs">${esc(n.sub)}</div>`:''}</div>`;
 
 /* ---------- derived session data ---------- */
 const played=SESS.sessions.filter(s=>s.s==='yes'||s.s==='likely');
@@ -2177,16 +2225,95 @@ const THESEUS_EPISODE_DETAILS={
   ]
  }
 };
+const TOA_EPISODE_DETAILS={
+ 'Session 0':{
+  title:`The Expedition Assembles`,
+  dek:`New Tomb of Annihilation characters were revealed, including Sha'Wayne and Framboust. Mark had to head out before the big reveal.`,
+  beats:[]
+ },
+ 'Episode 1':{
+  title:`Welcome to Chult, Mind Your Head`,
+  dek:`The expedition's first session was played in person in Dallas. The party sailed to Chult, Sha'Wayne faced a zombie tyrannosaur alone and Framboust met an abrupt end courtesy of a cannonball.`,
+  beats:[
+   {title:`The Eye in the Jungle`,paragraphs:[],image:{src:`assets/toa/episode-1-eye-obelisk.jpg`,alt:`A towering jungle obelisk carved with a watchful eye`,caption:`The eye-marked obelisk waiting in the Chultan jungle.`,width:1122,height:1402,kind:`portrait`,before:true}}
+  ]
+ },
+ 'Episode 2':{
+  title:`Camp Righteous`,
+  dek:`The party looted an abandoned fort, found orders to hunt down the Jungle Spears and escaped by canoe—with Father Nalu only barely aboard.`,
+  beats:[
+   {title:`The Abandoned Camp`,paragraphs:[],image:{src:`assets/toa/episode-2-camp-righteous.jpg`,alt:`The ruined wooden palisades of Camp Righteous beside a jungle river`,caption:`Camp Righteous, abandoned and ruined at the jungle's edge.`,width:1536,height:1024,before:true}}
+  ]
+ },
+ 'Episode 3':{
+  title:`Bluey Can't See Straight`,
+  dek:`Bluey contracted Sight Rot, a bedtime story became part of the cure and an unfortunate velociraptor did not survive the evening.`,
+  beats:[
+   {title:`Signs Along the Trail`,paragraphs:[],image:{src:`assets/toa/episode-3-thalassarian-corpse.jpg`,alt:`A dead scout lying face down on a rain-soaked jungle trail`,caption:`A dead scout lies along the jungle trail.`,width:1448,height:1086,before:true},images:[
+    {src:`assets/toa/episode-3-thalassian-dog-tags.jpg`,alt:`Three weathered identification tags lying in wet jungle debris`,caption:`The scout's identification tags.`,width:1402,height:1122},
+    {src:`assets/toa/episode-3-jungle-spears.jpg`,alt:`A tattered green banner marked with three black spearheads`,caption:`The banner of the Jungle Spears.`,width:1086,height:1448,kind:`contain`},
+    {src:`assets/toa/episode-3-hadrosaur-stampede.jpg`,alt:`A herd of hadrosaurs stampeding through a jungle river`,caption:`A hadrosaur stampede tears through the jungle.`,width:1672,height:941}
+   ]},
+   {title:`Blood in the Arena`,paragraphs:[],image:{src:`assets/toa/episode-3-arena-interior.jpg`,alt:`The crowded arena of Port Nyanzaru with a dinosaur in the fighting pit`,caption:`The arena at Port Nyanzaru.`,width:1536,height:1024,before:true},images:[
+    {src:`assets/toa/episode-3-zalira-in-stands.jpg`,alt:`Zalira watching the arena beside a black panther and feathered dinosaur`,caption:`Zalira watches from the royal stands.`,width:1536,height:1024},
+    {src:`assets/toa/episode-3-holloway-fighting-raptor.jpg`,alt:`Captain Bertram Holloway fighting a feathered raptor in the arena`,caption:`Captain Bertram Holloway faces a feathered raptor.`,width:1536,height:1024}
+   ]}
+  ]
+ },
+ 'Episode 4':{
+  title:`An Audience with Zalira Amaku`,
+  dek:`A royal summons leads to lavish gifts, a dangerous new commission and the least subtle souvenir Nine could have chosen.`,
+  beats:[
+   {title:`The Queen's Summons`,paragraphs:[
+    `The morning after saving the Queen of Beasts in the arena, the party is met by a remarkably composed twelve-year-old messenger. Zalira requests their company that day—an invitation phrased with enough certainty to make the answer obvious. He leads them through Port Nyanzaru and into a lavish pleasure palace overlooking the harbor.`,
+    `They enter by a private route and emerge into an audience chamber of gold, silk, incense, orchids and gilded cages. Zalira rests on a divan while recovering from the attack. Beside her is an empty jeweled collar belonging to the panther she lost in the arena.`
+   ]},
+   {title:`Royal Formalities`,paragraphs:[
+    `Nine settles onto a cushion as if the palace had been waiting for him, introduces his companions as his servants and immediately takes to the royal treatment. Sha'Wayne offers sincere condolences for Zalira's lost companion, while Bluey becomes fascinated by a tiger and Father Nalu keeps Chief Bok safely away from the room's many predators.`,
+    `Sha'Wayne quietly casts Speak with Animals. The tiger holds itself like a soldier at attention, and the other animals provide a running commentary that is considerably less diplomatic than the conversation around them. Zalira, amused by the party's behavior, decides their servants speak well of Nine.`
+   ],image:{src:`assets/toa/episode-4-audience-chamber.jpg`,alt:`Zalira reclining in an ornate audience chamber overlooking Port Nyanzaru`,caption:`The Queen of Beasts receives her rescuers in considerable style.`,width:1456,height:819,before:true}},
+   {title:`Payment in Kind`,paragraphs:[
+    `Zalira rewards the group for saving her life. The first gift is a Bag of Tricks, demonstrated when a tuft of fur becomes a giant venomous snake. The bag can call forth an animal ally three times each day, and Nine directs the gift to Bluey.`,
+    `The second gift goes to Nine: a heavy golden marker bearing Zalira's emblem. Any of her people will honor it once, granting a favor without questions. Nine briefly considers spending it on permanent residence in the palace before deciding that what he really wants is a palace of his own.`
+   ],images:[
+    {src:`assets/toa/episode-4-bag-of-tricks.jpg`,alt:`An ornate fur Bag of Tricks with a small animal peeking from inside`,caption:`The Bag of Tricks: three chances each day to call an animal ally.`,width:1122,height:1402,kind:`portrait`},
+    {src:`assets/toa/episode-4-zaliras-marker.jpg`,alt:`A large golden marker decorated with a roaring panther`,caption:`Zalira's marker promises one favor from her people, no questions asked.`,width:1122,height:1402,kind:`portrait`}
+   ]},
+   {title:`A Tyrannosaur for the Arena`,paragraphs:[
+    `When the party explains that they came to Chult to end the death curse, Zalira proposes a business arrangement of her own. Somewhere in the jungle is a legendary tyrannosaur, unusually large and covered in golden feathers. If the party captures it alive for her arena, she promises a handsome reward.`,
+    `She also agrees to have her people look for Trades in Good Fortune, the Tabaxi guide who is conspicuously absent from the city's guide board. Sha'Wayne's borrowed animal senses reveal that at least one creature in the palace already knows—and strongly dislikes—the missing guide.`
+   ]},
+   {title:`One Last Favor`,paragraphs:[
+    `An attendant brings Zalira urgent news, cutting the audience short. Before the party leaves, Father Nalu asks permission to heal her. The guards tense as he approaches, but Zalira accepts the spell and visibly relaxes as some of her injuries close. After they depart, she tells her attendants that she likes these ones.`,
+    `The feeling appears mutual. Sha'Wayne leaves with food and a sketch of the palace. Nine leaves with the cushion he had been sitting on.`
+   ]},
+   {title:`Resupplying in Port Nyanzaru`,paragraphs:[
+    `The party returns to Nalabako's shop to prepare for the next expedition. Healing potions remain on backorder, so they concentrate on practical supplies: they sell one of their three canoes, keep two, and buy insect repellent, food and water. A trained dinosaur is discussed but left behind.`,
+    `They also hear Nalabako's unvarnished opinion of a rival supplier, whose merchandise she considers thoroughly substandard.`
+   ]},
+   {title:`What Comes Next`,paragraphs:[
+    `Before returning to the jungle, the party wants to spend more time investigating Port Nyanzaru. Sha'Wayne intends to hire a guide. Nine wants to ask Kesharo N'goma about the mysterious eye symbol and the religious groups connected to it, while the group still has questions about the dead scout and his identifying tags.`,
+    `First, however, they plan to invite Kesharo to dinner and explain exactly what happened with Zalira—preferably before the Queen of Beasts calls in a favor of her own.`
+   ]}
+  ]
+ }
+};
+const episodeDetails=s=>s.c==='theseus'?THESEUS_EPISODE_DETAILS[s.ep]:s.c==='toa'?TOA_EPISODE_DETAILS[s.ep]:null;
+const episodeId=s=>`${s.c}-${s.ep.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}`;
 function episodeArt(image){if(!image)return'';return `<figure class="episode-art${image.kind?' '+esc(image.kind):''}"><img src="${esc(image.src)}" alt="${esc(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"><figcaption>${esc(image.caption)}</figcaption></figure>`}
 function episodeGallery(images){if(!images?.length)return'';return `<div class="episode-gallery">${images.map(episodeArt).join('')}</div>`}
-function theseusEpisodeDetail(s){const detail=THESEUS_EPISODE_DETAILS[s.ep],date=s.undated||fdate(s.d),summary=s.n||s.rest||'';
+function episodeDetailBody(s,options={}){const detail=episodeDetails(s),date=s.undated||fdate(s.d);
  if(!detail)return'';
- const beats=detail.beats.map(beat=>{const art=episodeArt(beat.image),gallery=episodeGallery(beat.images),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `${beat.image?.beforeSection?art:''}<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before&&!beat.image.beforeSection?art:''}${gallery}</section>`}).join('');
- return `<div class="ep-detail" id="theseus-${s.ep.replace(/\D/g,'')}" hidden><div class="episode-detail-inner"><div class="eyebrow">${esc(s.ep)} dossier</div><h3>${esc(s.title)}</h3><p class="episode-dek">${esc(detail.dek)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div>${beats}<button class="episode-close" type="button" data-episode-close>Close episode dossier ↑</button></div></div>`;
+ const beats=(detail.beats||[]).map(beat=>{const art=episodeArt(beat.image),gallery=episodeGallery(beat.images),copy=beat.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');return `${beat.image?.beforeSection?art:''}<section class="episode-beat"><h4>${esc(beat.title)}</h4>${beat.image?.before?art:''}${copy}${beat.image&&!beat.image.before&&!beat.image.beforeSection?art:''}${gallery}</section>`}).join('');
+ const headingId=options.headingId?` id="${options.headingId}"`:'';
+ const closeAttr=options.closeAttr||'data-episode-close',closeLabel=options.closeLabel||'Close episode dossier ↑';
+ const heading=options.compactHeader?'':`<div class="eyebrow">${esc(s.ep)} dossier</div><h3${headingId}>${esc(detail.title||s.title)}</h3>`;
+ return `<div class="episode-detail-inner">${heading}<p class="episode-dek">${esc(detail.dek)}</p><div class="episode-facts"><span><b>Played:</b> ${esc(date)}</span><span><b>Run by:</b> ${esc(s.dm)}</span></div>${beats}<button class="episode-close" type="button" ${closeAttr}>${esc(closeLabel)}</button></div>`;
 }
-function theseusEpisodeHeader(s){return `<span class="ep-head"><span class="ep-meta"><span class="ep-number">${esc(s.ep)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-title">${esc(s.title)}</span></span>`}
-function theseusEpisodeCard(s){const id=`theseus-${s.ep.replace(/\D/g,'')}`,summary=s.n||s.rest||'';return `<article class="ep ep-selectable" data-episode="${esc(s.ep)}"><button class="ep-select" type="button" data-episode-toggle aria-expanded="false" aria-controls="${id}">${theseusEpisodeHeader(s)}<span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ↓</span></span></button>${theseusEpisodeDetail(s)}</article>`}
-function theseusEpisodeStaticCard(s){const summary=s.n||s.rest||'';return `<article class="ep ep-static">${theseusEpisodeHeader(s)}<div class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span></div></article>`}
+function episodeDetail(s){return `<div class="ep-detail" id="${episodeId(s)}" hidden>${episodeDetailBody(s)}</div>`}
+function episodeHeader(s){return `<span class="ep-head"><span class="ep-meta"><span class="ep-number">${esc(s.ep)}</span><span class="ep-date">${esc(s.undated||fdate(s.d))}</span></span><span class="ep-title">${esc(s.title)}</span></span>`}
+function episodeDossierCard(s){const summary=s.n||s.rest||'';if(s.c==='toa')return `<article class="ep toa-drawer-card" data-episode="${esc(s.ep)}" style="--episode-color:${CAMPS[s.c].color}"><button class="ep-select" type="button" data-toa-dossier="${esc(s.ep)}" aria-haspopup="dialog" aria-expanded="false" aria-controls="toaDossierPanel">${episodeHeader(s)}<span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ←</span></span></button></article>`;return `<article class="ep ep-selectable" data-episode="${esc(s.ep)}" style="--episode-color:${CAMPS[s.c].color}"><button class="ep-select" type="button" data-episode-toggle aria-expanded="false" aria-controls="${episodeId(s)}">${episodeHeader(s)}<span class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span><span class="ep-more">Open episode dossier ↓</span></span></button>${episodeDetail(s)}</article>`}
+function theseusEpisodeStaticCard(s){const summary=s.n||s.rest||'';return `<article class="ep ep-static" style="--episode-color:${CAMPS[s.c].color}">${episodeHeader(s)}<div class="ep-summary"><span class="ep-summary-copy">${esc(summary)}</span></div></article>`}
 /* ---------- chapter: sessions ---------- */
 const tripSess=t=>SESS.sessions.filter(s=>s.s==='yes'&&s.d>=t.start&&s.d<=t.end);
 const tripRow=s=>`<li><span class="k">${D(s.d).toLocaleDateString('en-US',{weekday:'short'})}</span><span><span class="camp-pill" style="background:${CAMPS[s.c].color}">${CAMPS[s.c].name}${s.ep?' · '+esc(s.ep):''}</span><br>${recap(s)}</span></li>`;
@@ -2236,14 +2363,33 @@ function bindSessions(root){
 }
 
 function episodes(k){const eps=played.filter(s=>s.c===k).slice();if(!eps.length)return'';
- const card=s=>k==='theseus'?(THESEUS_EPISODE_DETAILS[s.ep]?theseusEpisodeCard(s):theseusEpisodeStaticCard(s)):epCard(s);
- const strip=list=>`<div class="strip${k==='theseus'?' theseus-strip':''}">${list.map(card).join('')}</div>`;
+ const card=s=>episodeDetails(s)?episodeDossierCard(s):k==='theseus'?theseusEpisodeStaticCard(s):epCard(s);
+ const strip=list=>`<div class="strip${k==='theseus'&&list.some(episodeDetails)?' theseus-strip':''}${k==='toa'?' toa-strip':''}">${list.map(card).join('')}</div>`;
  if(k!=='shatterbane')return `<h2 style="margin-top:36px">Previously on ${CAMPS[k].name}</h2>${strip(eps)}`;
  const by={};eps.forEach(s=>{const n=s.ep.startsWith('Season 1')?1:+s.ep.slice(1,s.ep.indexOf(' '));(by[n]=by[n]||[]).push(s)});
  return `<h2 style="margin-top:36px">Previously on Shatterbane</h2>${Object.keys(by).sort((a,b)=>a-b).map(n=>`<div class="season"><div class="eyebrow">Season ${n} · ${by[n].length} episodes${n==1?' in the notes':''}</div>${strip(by[n])}</div>`).join('')}`}
-function bindTheseusEpisodes(root){
+function bindEpisodeDossiers(root){
+ if(!root)return;
  const setOpen=(card,open)=>{const toggle=card.querySelector('[data-episode-toggle]'),detail=card.querySelector('.ep-detail'),label=card.querySelector('.ep-more');card.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));detail.hidden=!open;label.textContent=open?'Close episode dossier ↑':'Open episode dossier ↓'};
  root.addEventListener('click',e=>{const toggle=e.target.closest('[data-episode-toggle]'),close=e.target.closest('[data-episode-close]');if(toggle){const card=toggle.closest('.ep-selectable'),open=!card.classList.contains('is-open');root.querySelectorAll('.ep-selectable.is-open').forEach(other=>setOpen(other,false));setOpen(card,open);if(open)requestAnimationFrame(()=>card.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'nearest'}));return}if(close){const card=close.closest('.ep-selectable');setOpen(card,false);card.querySelector('[data-episode-toggle]').focus()}});
+}
+const toaDossierScrim=document.getElementById('toaDossierScrim'),toaDossierPanel=document.getElementById('toaDossierPanel'),toaDossierContent=document.getElementById('toaDossierContent'),toaDossierClose=document.getElementById('toaDossierClose'),toaDossierKicker=document.getElementById('toaDossierKicker'),toaDossierTitle=document.getElementById('toaDossierTitle');
+let lastToaDossierFocus=null,activeToaDossierToggle=null;
+function showToaDossier(s,toggle){
+ lastToaDossierFocus=document.activeElement;activeToaDossierToggle=toggle;toggle.setAttribute('aria-expanded','true');
+ const detail=episodeDetails(s);toaDossierKicker.textContent=`Season 1 · ${s.ep}`;toaDossierTitle.textContent=detail?.title||s.title;
+ toaDossierContent.innerHTML=episodeDetailBody(s,{compactHeader:true,closeAttr:'data-toa-dossier-close',closeLabel:'Close episode dossier'});toaDossierPanel.scrollTop=0;toaDossierScrim.hidden=false;document.body.style.overflow='hidden';
+ requestAnimationFrame(()=>{toaDossierScrim.classList.add('is-open');toaDossierClose.focus()});
+}
+function hideToaDossier(restoreFocus=true){
+ toaDossierScrim.classList.remove('is-open');activeToaDossierToggle?.setAttribute('aria-expanded','false');document.body.style.overflow='';
+ window.setTimeout(()=>{toaDossierScrim.hidden=true;toaDossierContent.innerHTML='';if(restoreFocus)lastToaDossierFocus?.focus();activeToaDossierToggle=null},reduceMotion.matches?0:220);
+}
+function bindToaDossierDrawer(root){
+ if(!root)return;
+ root.addEventListener('click',e=>{const toggle=e.target.closest('[data-toa-dossier]');if(!toggle)return;const s=played.find(item=>item.c==='toa'&&item.ep===toggle.dataset.toaDossier);if(s)showToaDossier(s,toggle)});
+ toaDossierClose.addEventListener('click',()=>hideToaDossier());toaDossierContent.addEventListener('click',e=>{if(e.target.closest('[data-toa-dossier-close]'))hideToaDossier()});toaDossierScrim.addEventListener('click',e=>{if(e.target===toaDossierScrim)hideToaDossier()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!toaDossierScrim.hidden)hideToaDossier()});
 }
 /* ---------- chapter: campaigns & D&D stats ---------- */
 function campaigns(){
@@ -2281,13 +2427,16 @@ function campaigns(){
  <section class="blk"><h2>Why We Didn't Play</h2><p style="margin-top:0">${nCan} planned sessions were called off in the group chat since early 2025. The excuses, in brief:</p><div class="chips">${reasons.map(r=>`<span class="chip">${esc(r)}</span>`).join('')}</div></section>
 `;
 }
-function campaign(k){const c=CAMPS[k];const pcs=CHARS.filter(x=>x.c===k);const npcs=NPCS.filter(x=>x.c===k);
-  return `<article id="camp-${k}"><div class="banner">${c.banner?`<img src="${c.banner}" alt="${c.name} setting" loading="lazy" style="${k==='shatterbane'?'object-position:50% 28%':c.pos?'object-position:'+c.pos:''}">`:`<div class="ph"><span>${c.name}</span><em>Setting art to come</em></div>`}</div>
-   <div class="eyebrow" style="margin-top:20px">Campaign</div><h1 style="margin:2px 0 8px">${c.name}</h1><div class="campmeta"><span><b>${k==='theseus'?'GMs':'DM'}:</b> ${k==='theseus'?'Alex, Jason, Matt G and Kessler':c.dm}</span><span><b>Sessions on record:</b> ${campCount[k]}</span></div>
+function campaign(k){const c=CAMPS[k];const pcs=CHARS.filter(x=>x.c===k&&!(k==='toa'&&x.n==='Framboust'));const npcs=NPCS.filter(x=>x.c===k);
+ const npcGrid=npcs.length?`<h2 style="margin-top:36px">Notable Figures</h2><div class="npcs">${npcs.filter(n=>!n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>${npcs.some(n=>n.minor)?`<div class="npcs small" style="margin-top:16px">${npcs.filter(n=>n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>`:''}`:'';
+ const toaFigures=k==='toa'?`<details class="notable-details" open><summary>Notable Figures</summary><div class="npcs toa-notables">${TOA_NOTABLES.map(notableCard).join('')}</div></details>`:'';
+ return `<article id="camp-${k}"><div class="banner campaign-banner" style="--campaign-color:${c.color}">${c.banner?`<img src="${c.banner}" alt="${esc(c.name)} setting" loading="lazy" style="${k==='shatterbane'?'object-position:50% 28%':c.pos?'object-position:'+c.pos:''}">`:`<div class="ph"><span>${esc(c.name)}</span><em>Setting art to come</em></div>`}<h1 class="campaign-bookmark">${esc(c.name)}</h1></div>
+   <div class="campmeta"><span><b>${k==='theseus'?'GMs':'DM'}:</b> ${k==='theseus'?'Alex, Jason, Matt G and Kessler':c.dm}</span><span><b>Sessions on record:</b> ${campCount[k]}</span></div>
    <p style="max-width:68ch">${c.blurb}</p>
-   <h2 style="margin-top:28px">The Party</h2><div class="roster">${pcs.map(x=>charCard(x,true)).join('')}</div>
+   <h2 style="margin-top:28px">The Party</h2><div class="roster${k==='toa'?' toa-party':''}">${pcs.map(x=>charCard(x,true)).join('')}</div>
+   ${toaFigures}
    ${episodes(k)}
-   ${npcs.length?`<h2 style="margin-top:36px">Notable Figures</h2><div class="npcs">${npcs.filter(n=>!n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>${npcs.some(n=>n.minor)?`<div class="npcs small" style="margin-top:16px">${npcs.filter(n=>n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>`:''}`:''}
+   ${k==='toa'?'':npcGrid}
   </article>`}
 
 /* ---------- chapter: hall of fame ---------- */
@@ -2375,9 +2524,10 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.2.1 · Last updated October 27, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.5.0 · Last updated October 30, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
-bindTheseusEpisodes(document.getElementById('ch-theseus'));
+bindEpisodeDossiers(document.getElementById('ch-theseus'));
+bindToaDossierDrawer(document.getElementById('ch-toa'));
 const tabs=document.getElementById('tabs'),sel=document.getElementById('tabsel');
 tabs.innerHTML=[...new Set(CH.map(c=>c[3]))].map(g=>`<span class="tg"><span class="tabgrp">${g}</span>${CH.filter(c=>c[3]===g).map(([id,l])=>`<a class="tab" href="#${id}" data-id="${id}">${l}</a>`).join('')}</span>`).join('');
 sel.innerHTML=[...new Set(CH.map(c=>c[3]))].map(g=>`<optgroup label="${g}">${CH.filter(c=>c[3]===g).map(([id,l])=>`<option value="${id}">${l}</option>`).join('')}</optgroup>`).join('');
@@ -2446,7 +2596,7 @@ function renderNotes(){
  if(!notes.length){draftList.innerHTML='<p class="draft-empty">Your satchel is empty. Add a memory or correction above.</p>';return}
  draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}</div><p>${esc(note.text)}</p><div class="draft-actions"><button class="note-action" type="button" data-note-action="email">Share by email</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
 }
-function showScribe(){lastScribeFocus=document.activeElement;scribeSection.value=normalizedSection();scribeScrim.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>{scribeScrim.classList.add('is-open');scribePanel.querySelector('input,select,textarea,button')?.focus()})}
+function showScribe(){if(!toaDossierScrim.hidden)hideToaDossier(false);lastScribeFocus=document.activeElement;scribeSection.value=normalizedSection();scribeScrim.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>{scribeScrim.classList.add('is-open');scribePanel.querySelector('input,select,textarea,button')?.focus()})}
 function hideScribe(){scribeScrim.classList.remove('is-open');document.body.style.overflow='';window.setTimeout(()=>{scribeScrim.hidden=true;lastScribeFocus?.focus()},reduceMotion.matches?0:220)}
 scribeOpen.addEventListener('click',showScribe);scribeClose.addEventListener('click',hideScribe);scribeScrim.addEventListener('click',e=>{if(e.target===scribeScrim)hideScribe()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!scribeScrim.hidden)hideScribe()});
