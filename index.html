@@ -191,8 +191,11 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .banner .ph span{font-size:22px;letter-spacing:.08em}
 .campaign-banner{margin-bottom:20px}
 .campaign-banner::after{content:"";position:absolute;z-index:1;left:-12px;bottom:8px;width:12px;height:12px;clip-path:polygon(0 0,100% 0,100% 100%);background:var(--campaign-color,var(--crimson));filter:brightness(.58) drop-shadow(0 2px 2px rgba(42,31,23,.22))}
-.campaign-bookmark{position:absolute;z-index:2;left:-12px;bottom:20px;width:max-content;max-width:calc(100% - 18px);margin:0;padding:11px 43px 12px 22px;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%);background:var(--campaign-color,var(--crimson));color:#fffdf7;font:600 clamp(20px,3.4vw,31px)/1.12 var(--f-display);letter-spacing:.025em;filter:drop-shadow(0 5px 6px rgba(42,31,23,.28))}
-.campaign-bookmark::before{content:"";position:absolute;inset:4px 25px 4px 4px;border:1px solid rgba(255,253,247,.32);pointer-events:none}
+.campaign-bookmark{position:absolute;z-index:2;isolation:isolate;left:-12px;bottom:20px;width:max-content;max-width:calc(100% - 18px);margin:0;padding:11px 43px 12px 22px;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%);background:var(--campaign-color,var(--crimson));color:#fffdf7;font:600 clamp(20px,3.4vw,31px)/1.12 var(--f-display);letter-spacing:.025em;filter:drop-shadow(0 5px 6px rgba(42,31,23,.28))}
+.campaign-bookmark::before,.campaign-bookmark::after{content:"";position:absolute;z-index:0;pointer-events:none;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%)}
+.campaign-bookmark::before{inset:4px 22px 4px 4px;background:rgba(255,253,247,.42)}
+.campaign-bookmark::after{inset:5px 23px 5px 5px;background:var(--campaign-color,var(--crimson))}
+.campaign-bookmark>span{position:relative;z-index:1}
 .rolelist{display:flex;flex-wrap:wrap;gap:10px}
 .role{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border:1px solid;border-radius:20px;background:var(--page);font-family:var(--f-ui);font-size:15px;color:var(--ink);text-decoration:none}
 .role:hover{background:var(--block)}
@@ -271,6 +274,7 @@ body.gate-locked .scribe-trigger{display:none}
 .scribe-panel{width:min(520px,100%);height:100%;overflow:auto;background:var(--page);border-left:2px solid var(--gold);box-shadow:-24px 0 70px rgba(0,0,0,.3);transform:translateX(24px);transition:transform .28s ease;padding:28px clamp(20px,5vw,38px) 40px}.scribe-scrim.is-open .scribe-panel{transform:none}
 .scribe-head{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;padding-bottom:18px;border-bottom:1px solid var(--rule)}.scribe-head .eyebrow{margin-bottom:2px}.scribe-head h2{margin:0;color:var(--crimson);font-size:30px}.scribe-head p{margin:6px 0 0;color:var(--ink-2);font-size:16px}.scribe-close{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--ink-2);font:25px/1 var(--f-ui);cursor:pointer}.scribe-close:hover{background:var(--block)}
 .scribe-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.scribe-field.full{grid-column:1/-1}.scribe-form textarea{min-height:132px;resize:vertical;line-height:1.45}.scribe-form .scribe-button{justify-self:start}.scribe-status{align-self:center;margin:0;font:14px var(--f-ui);color:var(--ink-2)}
+.scribe-image-help{margin:6px 0 0;color:var(--ink-3);font-size:13px;line-height:1.35}.scribe-image-preview,.draft-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;margin-top:9px}.scribe-image-preview:empty{display:none}.scribe-image-preview figure,.draft-images figure{min-width:0;margin:0}.scribe-image-preview img,.draft-images img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--rule);border-radius:2px;background:var(--block)}.scribe-image-preview figcaption,.draft-images figcaption{overflow:hidden;margin-top:3px;color:var(--ink-3);font:11px/1.25 var(--f-ui);text-overflow:ellipsis;white-space:nowrap}.draft-image-count{display:inline-flex;align-items:center;gap:5px;color:var(--ink-3);font:12px var(--f-ui)}
 .drafts{margin-top:28px;padding-top:20px;border-top:2px solid var(--gold)}.drafts-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.drafts h3{margin:0;color:var(--crimson);font-size:20px}.draft-empty{color:var(--ink-3);font-style:italic}.draft-list{display:grid;gap:12px;margin-top:12px}.draft-note{border:1px solid var(--rule);border-radius:3px;background:#fffdf7;padding:13px 14px}.draft-meta{display:flex;flex-wrap:wrap;gap:5px 10px;font:12px var(--f-sc);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}.draft-note p{margin:7px 0 10px;white-space:pre-wrap;font-size:16px;line-height:1.38}.draft-actions{display:flex;flex-wrap:wrap;gap:7px}.note-action{border:1px solid var(--rule);border-radius:2px;background:var(--page);color:var(--ink-2);padding:5px 9px;font:700 12px var(--f-ui);cursor:pointer}.note-action:hover{border-color:var(--gold);color:var(--crimson)}.note-action.danger:hover{border-color:var(--crimson)}.share-all-wrap{margin-top:18px;padding-top:18px;border-top:1px solid var(--rule)}.share-all-notes{width:100%;min-height:44px}
 /* Tomb of Annihilation dossier drawer: a left-side prototype */
 .toa-dossier-scrim{position:fixed;z-index:145;inset:0;display:flex;justify-content:flex-start;background:rgba(31,22,17,.58);backdrop-filter:blur(3px);opacity:0;transition:opacity .2s ease}.toa-dossier-scrim[hidden]{display:none}.toa-dossier-scrim.is-open{opacity:1}
@@ -366,7 +370,7 @@ body.gate-locked .scribe-trigger{display:none}
 <div class="scribe-scrim" id="scribeScrim" hidden>
   <aside class="scribe-panel" role="dialog" aria-modal="true" aria-labelledby="scribeTitle" aria-describedby="scribeIntro">
     <div class="scribe-head">
-      <div><div class="eyebrow">For the next edition</div><h2 id="scribeTitle">Leave a Field Note</h2><p id="scribeIntro">Record a memory, correction or archive idea. Drafts stay on this device until you share them by email with the archivist.</p></div>
+      <div><div class="eyebrow">For the next edition</div><h2 id="scribeTitle">Leave a Field Note</h2><p id="scribeIntro">Record a memory, correction or archive idea. Drafts and images stay on this device until you share them with the archivist.</p></div>
       <button class="scribe-close" id="scribeClose" type="button" aria-label="Close field notes">×</button>
     </div>
     <form class="scribe-form" id="scribeForm">
@@ -374,6 +378,7 @@ body.gate-locked .scribe-trigger{display:none}
       <div class="scribe-field"><label for="scribeKind">Note type</label><select id="scribeKind" name="kind"><option>Campaign memory</option><option>Session correction</option><option>Scheduling note</option><option>Idea for the archive</option></select></div>
       <div class="scribe-field full"><label for="scribeSection">Related archive section</label><select id="scribeSection" name="section"></select></div>
       <div class="scribe-field full"><label for="scribeText">What should the archivist know?</label><textarea id="scribeText" name="text" required placeholder="Add the date, character or moment if you remember it…"></textarea></div>
+      <div class="scribe-field full"><label for="scribeImages">Images to include</label><input id="scribeImages" name="images" type="file" accept="image/*" multiple><p class="scribe-image-help">Optional · up to four images · stored only on this device until shared</p><div class="scribe-image-preview" id="scribeImagePreview" aria-live="polite"></div></div>
       <button class="scribe-button" type="submit">Save draft</button><p class="scribe-status" id="scribeStatus" aria-live="polite"></p>
     </form>
     <section class="drafts" aria-labelledby="draftsTitle">
@@ -1534,7 +1539,7 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "The Expedition Assembles",
+   "title": "Expedition Assembles",
    "n": "New Tomb of Annihilation characters were revealed, including Sha'Wayne and Framboust, who rides an ostrich. Mark had to head out before the big reveal.",
    "src": "Texts",
    "ep": "Session 0",
@@ -1569,7 +1574,7 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "Welcome to Chult, Mind Your Head",
+   "title": "Mind your head",
    "n": "The expedition's first session, played in person in Dallas. The man who lost his head was Framboust, Jason's character.",
    "src": "Session log + texts",
    "undated": "",
@@ -1637,7 +1642,7 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "Bluey Can't See Straight",
+   "title": "The Arena Altercation",
    "n": "Moved to a Friday. Matt G's level-3 paladin may have overused Rebuke the Violent, and Bluey accidentally killed a velociraptor. The last messages went out at 1:27am.",
    "src": "Session log + texts",
    "undated": "",
@@ -1681,7 +1686,7 @@ const SESS={
    "s": "yes",
    "c": "toa",
    "dm": "Alex",
-   "title": "An Audience with Zalira Amaku",
+   "title": "An Audience with Zalira",
    "rest": "",
    "n": "Zalira rewards the party with a Bag of Tricks and a golden marker, then offers a new bounty: bring her a legendary golden-feathered tyrannosaur alive.",
    "src": "Session recording + Granola transcript",
@@ -2227,12 +2232,12 @@ const THESEUS_EPISODE_DETAILS={
 };
 const TOA_EPISODE_DETAILS={
  'Session 0':{
-  title:`The Expedition Assembles`,
+  title:`Expedition Assembles`,
   dek:`New Tomb of Annihilation characters were revealed, including Sha'Wayne and Framboust. Mark had to head out before the big reveal.`,
   beats:[]
  },
  'Episode 1':{
-  title:`Welcome to Chult, Mind Your Head`,
+  title:`Mind your head`,
   dek:`The expedition's first session was played in person in Dallas. The party sailed to Chult, Sha'Wayne faced a zombie tyrannosaur alone and Framboust met an abrupt end courtesy of a cannonball.`,
   beats:[
    {title:`The Eye in the Jungle`,paragraphs:[],image:{src:`assets/toa/episode-1-eye-obelisk.jpg`,alt:`A towering jungle obelisk carved with a watchful eye`,caption:`The eye-marked obelisk waiting in the Chultan jungle.`,width:1122,height:1402,kind:`portrait`,before:true}}
@@ -2246,7 +2251,7 @@ const TOA_EPISODE_DETAILS={
   ]
  },
  'Episode 3':{
-  title:`Bluey Can't See Straight`,
+  title:`The Arena Altercation`,
   dek:`Bluey contracted Sight Rot, a bedtime story became part of the cure and an unfortunate velociraptor did not survive the evening.`,
   beats:[
    {title:`Signs Along the Trail`,paragraphs:[],image:{src:`assets/toa/episode-3-thalassarian-corpse.jpg`,alt:`A dead scout lying face down on a rain-soaked jungle trail`,caption:`A dead scout lies along the jungle trail.`,width:1448,height:1086,before:true},images:[
@@ -2261,7 +2266,7 @@ const TOA_EPISODE_DETAILS={
   ]
  },
  'Episode 4':{
-  title:`An Audience with Zalira Amaku`,
+  title:`An Audience with Zalira`,
   dek:`A royal summons leads to lavish gifts, a dangerous new commission and the least subtle souvenir Nine could have chosen.`,
   beats:[
    {title:`The Queen's Summons`,paragraphs:[
@@ -2430,7 +2435,7 @@ function campaigns(){
 function campaign(k){const c=CAMPS[k];const pcs=CHARS.filter(x=>x.c===k&&!(k==='toa'&&x.n==='Framboust'));const npcs=NPCS.filter(x=>x.c===k);
  const npcGrid=npcs.length?`<h2 style="margin-top:36px">Notable Figures</h2><div class="npcs">${npcs.filter(n=>!n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>${npcs.some(n=>n.minor)?`<div class="npcs small" style="margin-top:16px">${npcs.filter(n=>n.minor).map(n=>`<div class="char">${pic(n.img,n.n)}<div class="cn">${esc(n.n)}</div>${n.k&&STATS.npcdrops[n.k]?`<div class="cs">${STATS.npcdrops[n.k]} mention${STATS.npcdrops[n.k]===1?'':'s'}</div>`:''}</div>`).join('')}</div>`:''}`:'';
  const toaFigures=k==='toa'?`<details class="notable-details" open><summary>Notable Figures</summary><div class="npcs toa-notables">${TOA_NOTABLES.map(notableCard).join('')}</div></details>`:'';
- return `<article id="camp-${k}"><div class="banner campaign-banner" style="--campaign-color:${c.color}">${c.banner?`<img src="${c.banner}" alt="${esc(c.name)} setting" loading="lazy" style="${k==='shatterbane'?'object-position:50% 28%':c.pos?'object-position:'+c.pos:''}">`:`<div class="ph"><span>${esc(c.name)}</span><em>Setting art to come</em></div>`}<h1 class="campaign-bookmark">${esc(c.name)}</h1></div>
+ return `<article id="camp-${k}"><div class="banner campaign-banner" style="--campaign-color:${c.color}">${c.banner?`<img src="${c.banner}" alt="${esc(c.name)} setting" loading="lazy" style="${k==='shatterbane'?'object-position:50% 28%':c.pos?'object-position:'+c.pos:''}">`:`<div class="ph"><span>${esc(c.name)}</span><em>Setting art to come</em></div>`}<h1 class="campaign-bookmark"><span>${esc(c.name)}</span></h1></div>
    <div class="campmeta"><span><b>${k==='theseus'?'GMs':'DM'}:</b> ${k==='theseus'?'Alex, Jason, Matt G and Kessler':c.dm}</span><span><b>Sessions on record:</b> ${campCount[k]}</span></div>
    <p style="max-width:68ch">${c.blurb}</p>
    <h2 style="margin-top:28px">The Party</h2><div class="roster${k==='toa'?' toa-party':''}">${pcs.map(x=>charCard(x,true)).join('')}</div>
@@ -2524,7 +2529,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.5.0 · Last updated October 30, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.0 · Last updated November 3, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindEpisodeDossiers(document.getElementById('ch-theseus'));
 bindToaDossierDrawer(document.getElementById('ch-toa'));
@@ -2573,49 +2578,85 @@ entryForm.addEventListener('submit',async e=>{
 entryGate.addEventListener('animationend',e=>{if(e.animationName==='ward-denied')entryGate.classList.remove('is-denied')});
 
 /* ---------- field notes ---------- */
-const NOTES_KEY='almanac-field-notes-v1',NAME_KEY='almanac-scribe-name-v1',FEEDBACK_EMAIL='designwick+almanac@gmail.com';
+const NOTES_KEY='almanac-field-notes-v1',NAME_KEY='almanac-scribe-name-v1',FEEDBACK_EMAIL='designwick+almanac@gmail.com',NOTE_IMAGE_DB='almanac-field-note-images-v1',NOTE_IMAGE_STORE='images',MAX_NOTE_IMAGES=4,MAX_NOTE_IMAGE_BYTES=10*1024*1024;
 const FIELD_NOTE_SECTIONS=[['sessions','Sessions & recaps','sessions'],['scheduling','Scheduling & dates','sessions'],['campaigns','Campaigns · General','table'],['shatterbane','Shatterbane','shatterbane'],['theseus','Starship Theseus','theseus'],['toa','Tomb of Annihilation','toa'],['cos','Curse of Strahd','cos']];
-const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),shareAllNotes=document.getElementById('shareAllNotes'),scribeCount=document.getElementById('scribeCount');
-let lastScribeFocus=null;
+const scribeOpen=document.getElementById('scribeOpen'),scribeScrim=document.getElementById('scribeScrim'),scribePanel=scribeScrim.querySelector('.scribe-panel'),scribeClose=document.getElementById('scribeClose'),scribeForm=document.getElementById('scribeForm'),scribeSection=document.getElementById('scribeSection'),scribeName=document.getElementById('scribeName'),scribeImages=document.getElementById('scribeImages'),scribeImagePreview=document.getElementById('scribeImagePreview'),scribeStatus=document.getElementById('scribeStatus'),draftList=document.getElementById('draftList'),shareAllNotes=document.getElementById('shareAllNotes'),scribeCount=document.getElementById('scribeCount');
+let lastScribeFocus=null,selectedImageUrls=[],draftImageUrls=[],notesRenderVersion=0;
 scribeSection.innerHTML=FIELD_NOTE_SECTIONS.map(([id,label])=>`<option value="${id}">${esc(label)}</option>`).join('');
 try{scribeName.value=localStorage.getItem(NAME_KEY)||''}catch{}
 function readNotes(){try{const saved=JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');return Array.isArray(saved)?saved:[]}catch{return[]}}
 function writeNotes(notes){try{localStorage.setItem(NOTES_KEY,JSON.stringify(notes));return true}catch{return false}}
+function openNoteImageDb(){
+ return new Promise((resolve,reject)=>{if(!('indexedDB'in window)){reject(new Error('Image storage is not available in this browser.'));return}const request=indexedDB.open(NOTE_IMAGE_DB,1);request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains(NOTE_IMAGE_STORE))request.result.createObjectStore(NOTE_IMAGE_STORE,{keyPath:'id'})};request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error||new Error('Image storage could not be opened.'))});
+}
+async function storeNoteImages(noteId,files){
+ if(!files.length)return[];const db=await openNoteImageDb(),refs=files.map((file,index)=>({id:`${noteId}:${index}`,name:file.name||`field-note-${index+1}.jpg`,type:file.type||'image/jpeg',size:file.size}));
+ return new Promise((resolve,reject)=>{const tx=db.transaction(NOTE_IMAGE_STORE,'readwrite'),store=tx.objectStore(NOTE_IMAGE_STORE);refs.forEach((ref,index)=>store.put({...ref,noteId,blob:files[index]}));tx.oncomplete=()=>{db.close();resolve(refs)};tx.onerror=()=>{db.close();reject(tx.error||new Error('The images could not be saved.'))};tx.onabort=tx.onerror});
+}
+async function readNoteImages(refs=[]){
+ if(!refs.length)return[];const db=await openNoteImageDb();
+ return new Promise((resolve,reject)=>{const tx=db.transaction(NOTE_IMAGE_STORE,'readonly'),store=tx.objectStore(NOTE_IMAGE_STORE),records=new Array(refs.length);refs.forEach((ref,index)=>{const request=store.get(ref.id);request.onsuccess=()=>{if(request.result)records[index]=request.result}});tx.oncomplete=()=>{db.close();resolve(records.filter(Boolean))};tx.onerror=()=>{db.close();reject(tx.error||new Error('The saved images could not be read.'))};tx.onabort=tx.onerror});
+}
+async function removeNoteImages(refs=[]){
+ if(!refs.length)return;const db=await openNoteImageDb();
+ return new Promise((resolve,reject)=>{const tx=db.transaction(NOTE_IMAGE_STORE,'readwrite'),store=tx.objectStore(NOTE_IMAGE_STORE);refs.forEach(ref=>store.delete(ref.id));tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error||new Error('The saved images could not be removed.'))};tx.onabort=tx.onerror});
+}
 function normalizedSection(){const id=location.hash.slice(1);if(FIELD_NOTE_SECTIONS.some(s=>s[0]===id))return id;if(id==='table'||id==='campaigns')return'campaigns';return'sessions'}
 function sectionInfo(id){return FIELD_NOTE_SECTIONS.find(s=>s[0]===id)||FIELD_NOTE_SECTIONS[0]}
 function sectionLabel(id){return sectionInfo(id)[1]}
 function fieldNoteText(note){
  const who=note.name||'Anonymous adventurer',url=`https://almanac.designwick.com/#${sectionInfo(note.section)[2]}`;
- return `THE ADVENTURERS' ALMANAC — FIELD NOTE\nFrom: ${who}\nType: ${note.kind}\nChapter: ${sectionLabel(note.section)}\nPage: ${url}\nRecorded: ${new Date(note.created).toLocaleString()}\n\n${note.text}`;
+ const imageLine=note.images?.length?`\nImages: ${note.images.map(image=>image.name).join(', ')}`:'';
+ return `THE ADVENTURERS' ALMANAC — FIELD NOTE\nFrom: ${who}\nType: ${note.kind}\nChapter: ${sectionLabel(note.section)}\nPage: ${url}\nRecorded: ${new Date(note.created).toLocaleString()}${imageLine}\n\n${note.text}`;
 }
 function setScribeStatus(message){scribeStatus.textContent=message;window.clearTimeout(setScribeStatus.timer);setScribeStatus.timer=window.setTimeout(()=>{scribeStatus.textContent=''},3200)}
-function openFieldNoteEmail(subject,body){setScribeStatus('Opening your preferred email app…');window.location.href=`mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
-function renderNotes(){
+function openFieldNoteEmail(subject,body,imageCount=0){setScribeStatus(imageCount?`Email opened. Attach the ${imageCount} saved image${imageCount===1?'':'s'} before sending.`:'Opening your preferred email app…');const attachmentReminder=imageCount?`\n\nATTACHMENT REMINDER: Please attach the ${imageCount} image${imageCount===1?'':'s'} listed above. This browser could not add files to email automatically.`:'';window.location.href=`mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body+attachmentReminder)}`}
+function selectedNoteImages(){return Array.from(scribeImages.files||[]).filter(file=>file.type.startsWith('image/')).slice(0,MAX_NOTE_IMAGES)}
+function clearSelectedImagePreview(){selectedImageUrls.forEach(url=>URL.revokeObjectURL(url));selectedImageUrls=[];scribeImagePreview.innerHTML=''}
+function renderSelectedImagePreview(){
+ clearSelectedImagePreview();const all=Array.from(scribeImages.files||[]).filter(file=>file.type.startsWith('image/')),files=all.slice(0,MAX_NOTE_IMAGES);if(all.length>MAX_NOTE_IMAGES)setScribeStatus(`Only the first ${MAX_NOTE_IMAGES} images will be saved.`);
+ files.forEach(file=>{const url=URL.createObjectURL(file);selectedImageUrls.push(url);const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');image.src=url;image.alt='Selected field note image';caption.textContent=file.name;figure.append(image,caption);scribeImagePreview.append(figure)});
+}
+scribeImages.addEventListener('change',renderSelectedImagePreview);
+async function shareFieldNotes(notes,subject){
+ const body=notes.map(fieldNoteText).join('\n\n————————————\n\n'),refs=notes.flatMap(note=>note.images||[]);let records=[];
+ if(refs.length){try{records=await readNoteImages(refs)}catch{setScribeStatus('The saved images could not be read. Opening the email without them.')}}
+ const files=records.map(record=>new File([record.blob],record.name,{type:record.type,lastModified:Date.now()}));
+ if(files.length&&navigator.share&&(!navigator.canShare||navigator.canShare({files}))){
+  setScribeStatus(`Choose your email app and send to ${FEEDBACK_EMAIL}.`);
+  try{await navigator.share({title:subject,text:`Send to: ${FEEDBACK_EMAIL}\n\n${body}`,files});setScribeStatus('Field notes and images shared.');return}catch(error){if(error?.name==='AbortError'){setScribeStatus('Sharing canceled. Your draft is still in the satchel.');return}}
+ }
+ openFieldNoteEmail(subject,body,files.length);
+}
+async function renderNotes(){
+ const version=++notesRenderVersion;draftImageUrls.forEach(url=>URL.revokeObjectURL(url));draftImageUrls=[];
  const notes=readNotes();scribeCount.textContent=notes.length||'';scribeCount.classList.toggle('has-notes',notes.length>0);
  shareAllNotes.hidden=!notes.length;
  if(!notes.length){draftList.innerHTML='<p class="draft-empty">Your satchel is empty. Add a memory or correction above.</p>';return}
- draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}</div><p>${esc(note.text)}</p><div class="draft-actions"><button class="note-action" type="button" data-note-action="email">Share by email</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
+ draftList.innerHTML=notes.map(note=>`<article class="draft-note" data-note-id="${esc(note.id)}"><div class="draft-meta"><span>${esc(note.kind)}</span><span>·</span><span>${esc(sectionLabel(note.section))}</span>${note.name?`<span>·</span><span>${esc(note.name)}</span>`:''}${note.images?.length?`<span>·</span><span class="draft-image-count">${note.images.length} image${note.images.length===1?'':'s'}</span>`:''}</div><p>${esc(note.text)}</p>${note.images?.length?'<div class="draft-images" aria-label="Attached images"></div>':''}<div class="draft-actions"><button class="note-action" type="button" data-note-action="share">Share note</button><button class="note-action danger" type="button" data-note-action="delete">Delete</button></div></article>`).join('');
+ await Promise.all(notes.filter(note=>note.images?.length).map(async note=>{let records=[];try{records=await readNoteImages(note.images)}catch{return}if(version!==notesRenderVersion)return;const card=Array.from(draftList.querySelectorAll('.draft-note')).find(item=>item.dataset.noteId===note.id),gallery=card?.querySelector('.draft-images');if(!gallery)return;records.forEach(record=>{const url=URL.createObjectURL(record.blob);draftImageUrls.push(url);const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');image.src=url;image.alt=record.name;caption.textContent=record.name;figure.append(image,caption);gallery.append(figure)})}));
 }
 function showScribe(){if(!toaDossierScrim.hidden)hideToaDossier(false);lastScribeFocus=document.activeElement;scribeSection.value=normalizedSection();scribeScrim.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>{scribeScrim.classList.add('is-open');scribePanel.querySelector('input,select,textarea,button')?.focus()})}
 function hideScribe(){scribeScrim.classList.remove('is-open');document.body.style.overflow='';window.setTimeout(()=>{scribeScrim.hidden=true;lastScribeFocus?.focus()},reduceMotion.matches?0:220)}
 scribeOpen.addEventListener('click',showScribe);scribeClose.addEventListener('click',hideScribe);scribeScrim.addEventListener('click',e=>{if(e.target===scribeScrim)hideScribe()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!scribeScrim.hidden)hideScribe()});
-scribeForm.addEventListener('submit',e=>{
- e.preventDefault();const data=new FormData(scribeForm),text=String(data.get('text')||'').trim();if(!text)return;
- const note={id:globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random()}`,name:String(data.get('name')||'').trim(),kind:String(data.get('kind')||'Other'),section:String(data.get('section')||'table'),text,created:new Date().toISOString()};
+scribeForm.addEventListener('submit',async e=>{
+ e.preventDefault();const data=new FormData(scribeForm),text=String(data.get('text')||'').trim(),files=selectedNoteImages();if(!text)return;const oversized=files.find(file=>file.size>MAX_NOTE_IMAGE_BYTES);if(oversized){setScribeStatus(`${oversized.name} is larger than 10 MB. Choose a smaller image.`);return}
+ const note={id:globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random()}`,name:String(data.get('name')||'').trim(),kind:String(data.get('kind')||'Other'),section:String(data.get('section')||'table'),text,created:new Date().toISOString(),images:[]};
+ if(files.length){try{note.images=await storeNoteImages(note.id,files)}catch{setScribeStatus('This browser could not save those images. The draft was not added.');return}}
  const notes=readNotes();notes.unshift(note);
- if(!writeNotes(notes)){setScribeStatus('This browser would not save the note. Try again before closing.');return}
+ if(!writeNotes(notes)){await removeNoteImages(note.images).catch(()=>{});setScribeStatus('This browser would not save the note. Try again before closing.');return}
  try{localStorage.setItem(NAME_KEY,note.name)}catch{}
- scribeForm.querySelector('textarea').value='';renderNotes();setScribeStatus('Draft tucked into your satchel. Email it when ready.');
+ scribeForm.querySelector('textarea').value='';scribeImages.value='';clearSelectedImagePreview();renderNotes();setScribeStatus(`Draft tucked into your satchel${note.images.length?' with images':''}. Share it when ready.`);
 });
 draftList.addEventListener('click',async e=>{
  const button=e.target.closest('[data-note-action]');if(!button)return;const card=button.closest('[data-note-id]'),notes=readNotes(),note=notes.find(n=>n.id===card.dataset.noteId);if(!note)return;
- if(button.dataset.noteAction==='delete'){writeNotes(notes.filter(n=>n.id!==note.id));renderNotes();setScribeStatus('Note discarded.');return}
- const subject=`[Almanac Field Note] ${note.kind} — ${sectionLabel(note.section)}`,body=fieldNoteText(note);
- openFieldNoteEmail(subject,body);
+ if(button.dataset.noteAction==='delete'){await removeNoteImages(note.images).catch(()=>{});writeNotes(notes.filter(n=>n.id!==note.id));renderNotes();setScribeStatus('Note discarded.');return}
+ const subject=`[Almanac Field Note] ${note.kind} — ${sectionLabel(note.section)}`;
+ await shareFieldNotes([note],subject);
 });
-shareAllNotes.addEventListener('click',()=>{
- const notes=readNotes();if(!notes.length)return;const count=`${notes.length} field note${notes.length===1?'':'s'}`,subject=`[Almanac Field Notes] ${count}`,body=notes.map(fieldNoteText).join('\n\n————————————\n\n');openFieldNoteEmail(subject,body);
+shareAllNotes.addEventListener('click',async()=>{
+ const notes=readNotes();if(!notes.length)return;const count=`${notes.length} field note${notes.length===1?'':'s'}`,subject=`[Almanac Field Notes] ${count}`;await shareFieldNotes(notes,subject);
 });
 renderNotes();
 </script>
