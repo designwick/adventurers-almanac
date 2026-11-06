@@ -2270,15 +2270,15 @@ const TOA_EPISODE_DETAILS={
   dek:`A royal summons leads to lavish gifts, a dangerous new commission and the least subtle souvenir Nine could have chosen.`,
   beats:[
    {title:`The Queen's Summons`,paragraphs:[
-    `The morning after saving the Queen of Beasts in the arena, the party is met by a remarkably composed twelve-year-old messenger. Zalira requests their company that day—an invitation phrased with enough certainty to make the answer obvious. He leads them through Port Nyanzaru and into a lavish pleasure palace overlooking the harbor.`,
-    `They enter by a private route and emerge into an audience chamber of gold, silk, incense, orchids and gilded cages. Zalira rests on a divan while recovering from the attack. Beside her is an empty jeweled collar belonging to the panther she lost in the arena.`
+    `After a long rest and a hard-earned rise in level, the party is met by a remarkably composed twelve-year-old messenger. Zalira requests their company that day—an invitation phrased with enough certainty to make the answer obvious. He leads them through Port Nyanzaru and into a lavish pleasure palace overlooking the harbor.`,
+    `They enter by a private route and emerge into an audience chamber of gold, silk, incense, orchids and gilded cages. Zalira rests on a divan while recovering from the arena attack, with visible wrappings around her injured ribs. Beside her is an empty jeweled collar belonging to the panther she lost in the arena.`
    ]},
    {title:`Royal Formalities`,paragraphs:[
     `Nine settles onto a cushion as if the palace had been waiting for him, introduces his companions as his servants and immediately takes to the royal treatment. Sha'Wayne offers sincere condolences for Zalira's lost companion, while Bluey becomes fascinated by a tiger and Father Nalu keeps Chief Bok safely away from the room's many predators.`,
     `Sha'Wayne quietly casts Speak with Animals. The tiger holds itself like a soldier at attention, and the other animals provide a running commentary that is considerably less diplomatic than the conversation around them. Zalira, amused by the party's behavior, decides their servants speak well of Nine.`
    ],image:{src:`assets/toa/episode-4-audience-chamber.jpg`,alt:`Zalira reclining in an ornate audience chamber overlooking Port Nyanzaru`,caption:`The Queen of Beasts receives her rescuers in considerable style.`,width:1456,height:819,before:true}},
    {title:`Payment in Kind`,paragraphs:[
-    `Zalira rewards the group for saving her life. The first gift is a Bag of Tricks, demonstrated when a tuft of fur becomes a giant venomous snake. The bag can call forth an animal ally three times each day, and Nine directs the gift to Bluey.`,
+    `Zalira rewards the group for saving her life. The first gift is a Bag of Tricks, demonstrated when a tuft of fur becomes a giant venomous snake that hisses, “At lasssssst.” The bag can call forth an animal ally three times each day, and Nine directs the gift to Bluey.`,
     `The second gift goes to Nine: a heavy golden marker bearing Zalira's emblem. Any of her people will honor it once, granting a favor without questions. Nine briefly considers spending it on permanent residence in the palace before deciding that what he really wants is a palace of his own.`
    ],images:[
     {src:`assets/toa/episode-4-bag-of-tricks.jpg`,alt:`An ornate fur Bag of Tricks with a small animal peeking from inside`,caption:`The Bag of Tricks: three chances each day to call an animal ally.`,width:1122,height:1402,kind:`portrait`},
@@ -2295,10 +2295,6 @@ const TOA_EPISODE_DETAILS={
    {title:`Resupplying in Port Nyanzaru`,paragraphs:[
     `The party returns to Nalabako's shop to prepare for the next expedition. Healing potions remain on backorder, so they concentrate on practical supplies: they sell one of their three canoes, keep two, and buy insect repellent, food and water. A trained dinosaur is discussed but left behind.`,
     `They also hear Nalabako's unvarnished opinion of a rival supplier, whose merchandise she considers thoroughly substandard.`
-   ]},
-   {title:`What Comes Next`,paragraphs:[
-    `Before returning to the jungle, the party wants to spend more time investigating Port Nyanzaru. Sha'Wayne intends to hire a guide. Nine wants to ask Kesharo N'goma about the mysterious eye symbol and the religious groups connected to it, while the group still has questions about the dead scout and his identifying tags.`,
-    `First, however, they plan to invite Kesharo to dinner and explain exactly what happened with Zalira—preferably before the Queen of Beasts calls in a favor of her own.`
    ]}
   ]
  }
@@ -2529,7 +2525,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.0 · Last updated November 3, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.1 · Last updated November 5, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindEpisodeDossiers(document.getElementById('ch-theseus'));
 bindToaDossierDrawer(document.getElementById('ch-toa'));
