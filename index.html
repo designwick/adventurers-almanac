@@ -1692,6 +1692,20 @@ const SESS={
    "src": "Session recording + Granola transcript",
    "ep": "Episode 4",
    "undated": ""
+  },
+  {
+   "d": "2026-11-05",
+   "s": "yes",
+   "c": "",
+   "dm": "",
+   "title": "Hung out online and talked",
+   "rest": "",
+   "n": "",
+   "src": "Group note",
+   "ep": "",
+   "undated": "",
+   "label": "Online hangout",
+   "status": "Hung out online"
   }
  ],
  "trips": [
@@ -2328,14 +2342,14 @@ function sessions(){
   return `<div class="tl-year"><div class="y">${y}</div><div class="scroll-x"><div class="tl-track">${mons.map((m,i)=>`<span class="tl-tick" style="left:${i/12*100}%"></span><span class="tl-mon" style="left:${(i+.5)/12*100}%">${m}</span>`).join('')}
    ${empty?`<div class="tl-empty">No records yet for ${y}. Waiting on the session notes.</div>`:''}
    ${tr.map(t=>{const a=pos(t.start),b=pos(t.end);return `<button class="trip" style="left:${a}%;width:max(26px,${b-a}%)" data-trip="${t.id}" aria-label="${t.name} trip" data-tip="${t.name} trip · ${fdate(t.start)}–${fdate(t.end)}">✦</button>`}).join('')}
-   ${(()=>{const seen={};return ss.map(s=>{const k=s.d;seen[k]=(seen[k]||0)+1;s._off=(seen[k]-1)*10;return s})})().map((s,i)=>{const col=s.c&&CAMPS[s.c]?CAMPS[s.c].color:'var(--ink-3)';const lbl=s.s==='no'?'Cancelled':(CAMPS[s.c]?.name||'Unknown campaign');return `<button class="dot ${s.s}" style="left:calc(${pos(s.d)}% + ${s._off}px);background:${col}" data-i="${SESS.sessions.indexOf(s)}" aria-label="${fdate(s.d)}: ${lbl}" data-tip="${s.undated?esc(s.undated):fdate(s.d)} · ${lbl}${s.ep?' · '+s.ep:''}"></button>`}).join('')}
+   ${(()=>{const seen={};return ss.map(s=>{const k=s.d;seen[k]=(seen[k]||0)+1;s._off=(seen[k]-1)*10;return s})})().map((s,i)=>{const col=s.c&&CAMPS[s.c]?CAMPS[s.c].color:'var(--ink-3)';const lbl=s.s==='no'?'Cancelled':(CAMPS[s.c]?.name||s.label||'Unassigned');return `<button class="dot ${s.s}" style="left:calc(${pos(s.d)}% + ${s._off}px);background:${col}" data-i="${SESS.sessions.indexOf(s)}" aria-label="${fdate(s.d)}: ${lbl}" data-tip="${s.undated?esc(s.undated):fdate(s.d)} · ${lbl}${s.ep?' · '+s.ep:''}"></button>`}).join('')}
   </div></div></div>`};
- const legend=`<div class="legend">${Object.values(CAMPS).map(c=>`<span><i style="background:${c.color}"></i>${c.name}</span>`).join('')}<span>✕ Cancelled</span><span><i style="background:var(--gold-soft);border:1px solid var(--gold);border-radius:3px;width:22px"></i>Weekend trip</span></div>`;
- const tableRows=SESS.sessions.filter(s=>s.s!=='no').map(s=>`<tr><td class="n">${s.undated?esc(s.undated):fdate(s.d)}</td><td>${esc(CAMPS[s.c]?.name||'')}${s.ep?'<br><span class="note">'+esc(s.ep)+'</span>':''}</td><td>${recap(s)}</td></tr>`).join('');
+ const legend=`<div class="legend">${Object.values(CAMPS).map(c=>`<span><i style="background:${c.color}"></i>${c.name}</span>`).join('')}<span><i style="background:var(--ink-3)"></i>Online hangout</span><span>✕ Cancelled</span><span><i style="background:var(--gold-soft);border:1px solid var(--gold);border-radius:3px;width:22px"></i>Weekend trip</span></div>`;
+ const tableRows=SESS.sessions.filter(s=>s.s!=='no').map(s=>`<tr><td class="n">${s.undated?esc(s.undated):fdate(s.d)}</td><td>${esc(CAMPS[s.c]?.name||'—')}${s.ep?'<br><span class="note">'+esc(s.ep)+'</span>':''}</td><td>${recap(s)}</td></tr>`).join('');
  const trips=SESS.trips.map(t=>`<article class="tripcard" id="trip-${t.id}"><img src="${t.img}" alt="The group on the ${t.name} trip" loading="lazy"><div class="tx"><div class="eyebrow">${fdate(t.start)} – ${fdate(t.end)}</div><h3 style="font-size:22px">${t.name}: ${t.sub}</h3><p style="margin:0">${esc(t.note)}</p><ol class="ledger trip-eps">${tripSess(t).map(tripRow).join('')}</ol></div></article>`).join('');
  return `
  <div class="opener"><div class="eyebrow">Chapter II</div><h1>The Sessions</h1>
- <p class="lede drop">Every dot is a night the party actually sat down to play, from the earliest notes in 2022 to last month. Tap one for the episode recap.</p></div>
+ <p class="lede drop">Every dot marks a night the group got together, from the earliest notes in 2022 to the latest gathering. Tap one for the recap.</p></div>
  ${legend}
  <p class="note" style="margin:10px 0 0">Tap any dot or trip banner to open its recap.</p>
  <div class="panel tlpanel" style="margin-top:8px;padding-bottom:30px">${years.map(row).join('')}<div class="pop" id="pop" role="dialog" aria-live="polite" hidden><button class="pop-x" aria-label="Close">×</button><div class="pop-body"></div></div></div>
@@ -2354,7 +2368,7 @@ function bindSessions(root){
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
  document.addEventListener('click',e=>{if(!pop.hidden&&!pop.contains(e.target)&&!e.target.closest('.dot,.trip'))close()});
  root.querySelectorAll('.dot').forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('.dot.sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');pop.classList.remove('wide');const s=SESS.sessions[+b.dataset.i];requestAnimationFrame(()=>place(b));const c=CAMPS[s.c];
-  const status={yes:'Played',likely:'Probably played',unconfirmed:'On the calendar, not yet confirmed',no:'Cancelled'}[s.s];
+  const status=s.status||{yes:'Played',likely:'Probably played',unconfirmed:'On the calendar, not yet confirmed',no:'Cancelled'}[s.s];
   det.innerHTML=`<div class="eyebrow">${s.undated?'Date unknown':D(s.d).toLocaleDateString('en-US',{weekday:'long'})}${s.ep?' · '+esc(s.ep):''}</div><div class="d">${s.undated?esc(s.undated):fdate(s.d)}</div>
    <p style="margin:6px 0">${c?`<span class="camp-pill" style="background:${c.color}">${c.name}</span> `:''}<span class="ui note">${status}${s.dm&&s.s!=='no'?' · Run by '+esc(s.dm):''}</span></p>
    ${s.title?`<p style="margin:0">${recap(s)}</p>`:(s.n?`<p style="margin:0">${esc(s.n)}</p>`:'')}<p class="note" style="margin:6px 0 0">Source: ${esc(s.src)}</p>`}));
@@ -2525,7 +2539,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.1 · Last updated November 5, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.2 · Last updated November 5, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindEpisodeDossiers(document.getElementById('ch-theseus'));
 bindToaDossierDrawer(document.getElementById('ch-toa'));
