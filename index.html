@@ -1575,8 +1575,8 @@ const SESS={
    "c": "toa",
    "dm": "Alex",
    "title": "Mind your head",
-   "n": "The expedition's first session, played in person in Dallas. The man who lost his head was Framboust, Jason's character.",
-   "src": "Session log + texts",
+   "n": "Marlowe Emberthorn sends the party to Chult to find the source of the Death Curse. After a pirate attack, three months at sea and an introduction to Port Nyanzaru, their first expedition leads to an eye-marked obelisk in the jungle.",
+   "src": "Alex's campaign notes + session log + texts",
    "undated": "",
    "ep": "Episode 1",
    "rest": ""
@@ -1621,8 +1621,8 @@ const SESS={
    "c": "toa",
    "dm": "Alex",
    "title": "Camp Righteous",
-   "n": "Father Nalu barely made it to the canoe.",
-   "src": "Session log + texts",
+   "n": "Camp Righteous is abandoned but not empty. Its dead rise against the party, who escape with two canoes, salvaged supplies and orders to kill any Jungle Spears they find.",
+   "src": "Alex's campaign notes + session log + texts",
    "undated": "",
    "ep": "Episode 2",
    "rest": ""
@@ -1643,8 +1643,8 @@ const SESS={
    "c": "toa",
    "dm": "Alex",
    "title": "The Arena Altercation",
-   "n": "Moved to a Friday. Matt G's level-3 paladin may have overused Rebuke the Violent, and Bluey accidentally killed a velociraptor. The last messages went out at 1:27am.",
-   "src": "Session log + texts",
+   "n": "The return to Port Nyanzaru brings a murdered Thalassarian scout, a talking snake's clue and a bout of Sight Rot. At the Grand Arena, Jungle Spear assassins strike Zalira's box and the party helps save the Queen of Beasts.",
+   "src": "Alex's campaign notes + session log + texts",
    "undated": "",
    "ep": "Episode 3",
    "rest": ""
@@ -1688,8 +1688,8 @@ const SESS={
    "dm": "Alex",
    "title": "An Audience with Zalira",
    "rest": "",
-   "n": "Zalira rewards the party with a Bag of Tricks and a golden marker, then offers a new bounty: bring her a legendary golden-feathered tyrannosaur alive.",
-   "src": "Session recording + Granola transcript",
+   "n": "Zalira rewards the party with a Bag of Tricks and a golden marker, offers a new dinosaur bounty and sends them back into Port Nyanzaru to resupply.",
+   "src": "Session recording + Granola transcript + Alex's campaign notes",
    "ep": "Episode 4",
    "undated": ""
   },
@@ -1824,7 +1824,7 @@ const TOA_NOTABLES=[
  {n:'Captain Bertram Holloway',asset:'assets/toa/captain-bertram-holloway.jpg',pos:'50% 23%'},
  {n:'Auntie Boma',asset:'assets/toa/auntie-boma.jpg',pos:'50% 22%'},
  {n:'Professor Jeb',asset:'assets/toa/professor-jeb.jpg',pos:'50% 21%'},
- {n:'Nalabako',sub:'Merchant and outfitter'},
+ {n:'Nala Bako',sub:'Merchant and outfitter'},
  {n:"Kesharo N'goma",sub:'Temple contact'},
  {n:'Trades in Good Fortune',sub:'Missing Tabaxi guide'},
  {n:'Framboust',img:'framboust',dead:true}
@@ -2252,30 +2252,71 @@ const TOA_EPISODE_DETAILS={
  },
  'Episode 1':{
   title:`Mind your head`,
-  dek:`The expedition's first session was played in person in Dallas. The party sailed to Chult, Sha'Wayne faced a zombie tyrannosaur alone and Framboust met an abrupt end courtesy of a cannonball.`,
+  dek:`An invitation from a legendary adventurer sends the party across the sea to Chult, where pirates, crushing heat and an eye-marked obelisk await.`,
   beats:[
-   {title:`The Eye in the Jungle`,paragraphs:[],image:{src:`assets/toa/episode-1-eye-obelisk.jpg`,alt:`A towering jungle obelisk carved with a watchful eye`,caption:`The eye-marked obelisk waiting in the Chultan jungle.`,width:1122,height:1402,kind:`portrait`,before:true}}
+   {title:`A Mysterious Invitation`,paragraphs:[
+    `The heroes gather with several dozen other hopefuls at Emberthorn Manor, answering an advertisement from the elderly adventurer Marlowe Emberthorn. She needs capable people willing to endure suffocating heat, deadly illness and constant danger for a mission whose safe return is far from certain.`,
+    `Marlowe explains that resurrection magic has stopped working and that people previously restored to life are now wasting away. The Death Curse began only months ago, and its source is believed to lie somewhere in Chult—possibly near the lost city of Omu. She provides passage aboard the HMS Horizon, expedition funds and a letter of introduction to her old companion Kesharo N'goma.`
+   ]},
+   {title:`End of the Voyage`,paragraphs:[
+    `After three months at sea, the Horizon finally sights the Chultan coast. Port Nyanzaru is nearly within reach when a pirate ship sweeps out from behind a small island and attacks. Framboust's journey ends abruptly in the cannon fire, but the surviving heroes repel the boarders and capture three pirates.`,
+    `Kesharo N'goma meets the expedition at the docks. Sha'Wayne initially asks him to release the prisoners, then withdraws the request after learning that their tragic stories may have been inventions. Kesharo keeps them for interrogation.`
+   ]},
+   {title:`First Steps in Port Nyanzaru`,paragraphs:[
+    `Kesharo guides the newcomers through Dockside, the Plaza, High Town and Old Town on the way to the Lodge. Port Nyanzaru is an overwhelming first impression: dinosaurs hauling cargo, ancient ruins absorbed into newer buildings, crowded markets, brilliant colors and heat and humidity unlike anything they left behind.`,
+    `The party buys supplies and chooses a route. Every guide at the Lodge is away except Trades in Good Fortune, a tabaxi who claims his availability proves how skilled he is at bringing expeditions home. Bluey and Father Nalu decline to hire him.`
+   ]},
+   {title:`The Eye in the Jungle`,paragraphs:[
+    `The first journey upriver is already dangerous enough for Sha'Wayne to face a zombie tyrannosaur alone. Later, Father Nalu hears voices coming from the river and follows them into the trees. They lead to a solitary black stone obelisk carved with a watchful eye.`,
+    `The session ends one hex downriver from Camp Righteous, with the expedition finally beyond the safety of Port Nyanzaru.`
+   ],image:{src:`assets/toa/episode-1-eye-obelisk.jpg`,alt:`A towering jungle obelisk carved with a watchful eye`,caption:`A black obelisk marked with a watchful eye stands alone in the Chultan jungle.`,width:1122,height:1402,kind:`portrait`,before:true}}
   ]
  },
  'Episode 2':{
   title:`Camp Righteous`,
-  dek:`The party looted an abandoned fort, found orders to hunt down the Jungle Spears and escaped by canoe—with Father Nalu only barely aboard.`,
+  dek:`The expedition finds Camp Righteous abandoned, overrun and still smoldering. Then the dead begin to move.`,
   beats:[
-   {title:`The Abandoned Camp`,paragraphs:[],image:{src:`assets/toa/episode-2-camp-righteous.jpg`,alt:`The ruined wooden palisades of Camp Righteous beside a jungle river`,caption:`Camp Righteous, abandoned and ruined at the jungle's edge.`,width:1536,height:1024,before:true}}
+   {title:`The Abandoned Camp`,paragraphs:[
+    `Two more days upriver bring the heroes to Camp Righteous shortly after sunrise. The smell of wet ash, rot and old blood reaches them first. Beyond it stands a hastily built palisade with torn banners, overturned canoes and a doorway that bangs open and shut in the wind.`,
+    `Soldiers from Port Nyanzaru built the camp as a base for operations against the Jungle Spears. Whatever happened here left no living witness. The camp is less a fortress than a logging outpost, and every sign suggests its defenders were overwhelmed.`
+   ],image:{src:`assets/toa/episode-2-camp-righteous.jpg`,alt:`The ruined wooden palisades of Camp Righteous beside a jungle river`,caption:`Camp Righteous, abandoned and ruined at the jungle's edge.`,width:1536,height:1024,before:true}},
+   {title:`Signs of Something Worse`,paragraphs:[
+    `Supply crates near the dock bear Kesharo's shipping sigil. Fires still smolder with green-black embers even though the camp has plainly been dead for days. In the field shrine, the party finds the same eye symbol carved into the jungle obelisk.`,
+    `Nine recovers the fort commander's orders. They are blunt: find any Jungle Spears operating in the area and kill them.`
+   ]},
+   {title:`The Dead Rise`,paragraphs:[
+    `As the party pushes deeper into the camp, its dead rise and attack in growing numbers. The expedition is forced into a fighting retreat toward the river, with Father Nalu and Bluey both brought to the edge of death.`,
+    `They escape by canoe with Father Nalu only barely aboard. The survivors leave with two additional canoes, a handful of salvaged supplies and the commander's lethal orders—but no answer for what destroyed Camp Righteous.`
+   ]}
   ]
  },
  'Episode 3':{
   title:`The Arena Altercation`,
-  dek:`Bluey contracted Sight Rot, a bedtime story became part of the cure and an unfortunate velociraptor did not survive the evening.`,
+  dek:`A grim return to Port Nyanzaru leads from a murdered scout and a talking snake's clue to an assassination attempt in the Grand Arena.`,
   beats:[
-   {title:`Signs Along the Trail`,paragraphs:[],image:{src:`assets/toa/episode-3-thalassarian-corpse.jpg`,alt:`A dead scout lying face down on a rain-soaked jungle trail`,caption:`A dead scout lies along the jungle trail.`,width:1448,height:1086,before:true},images:[
-    {src:`assets/toa/episode-3-thalassian-dog-tags.jpg`,alt:`Three weathered identification tags lying in wet jungle debris`,caption:`The scout's identification tags.`,width:1402,height:1122},
+   {title:`The Road Back`,paragraphs:[
+    `The retreat from Camp Righteous begins badly. The party encounters a hadrosaur stampede and passes several bodies along the riverbank before Bluey notices a pair of boots tangled in the roots of a fallen strangler-fig.`,
+    `The body belongs to a Thalassarian scout, dead for days with brightly colored darts buried in his back. He carries three identification tags—his own and those of two fallen companions—as though he had been trying to bring them home. The party takes the tags for safekeeping.`
+   ],image:{src:`assets/toa/episode-3-thalassarian-corpse.jpg`,alt:`A dead scout lying face down on a rain-soaked jungle trail`,caption:`A dead Thalassarian scout lies tangled among the jungle roots.`,width:1448,height:1086,before:true},images:[
+    {src:`assets/toa/episode-3-thalassian-dog-tags.jpg`,alt:`Three weathered identification tags lying in wet jungle debris`,caption:`Three Thalassarian identification tags, carried together for the journey home.`,width:1402,height:1122},
     {src:`assets/toa/episode-3-jungle-spears.jpg`,alt:`A tattered green banner marked with three black spearheads`,caption:`The banner of the Jungle Spears.`,width:1086,height:1448,kind:`contain`},
     {src:`assets/toa/episode-3-hadrosaur-stampede.jpg`,alt:`A herd of hadrosaurs stampeding through a jungle river`,caption:`A hadrosaur stampede tears through the jungle.`,width:1672,height:941}
    ]},
-   {title:`Blood in the Arena`,paragraphs:[],image:{src:`assets/toa/episode-3-arena-interior.jpg`,alt:`The crowded arena of Port Nyanzaru with a dinosaur in the fighting pit`,caption:`The arena at Port Nyanzaru.`,width:1536,height:1024,before:true},images:[
+   {title:`The Green Ones and the Purple One`,paragraphs:[
+    `Sha'Wayne questions a nearby snake about the scout's death. Its account is brief and unsettling: “The green ones chased them. But the purple one got him.” The clue offers no immediate explanation for the darts, the bodies or the unseen factions moving through the jungle.`,
+    `On the final day of the journey, Bluey's eyes cloud over with Sight Rot. He completes the trip entirely blind. A night of safety and rest at the Lodge finally clears his vision.`
+   ]},
+   {title:`The Grand Arena`,paragraphs:[
+    `That evening the party visits the arena in the Plaza. Torches and lanterns turn the stone gold while drums, shouted bets and a roaring crowd surround the legendary Captain Bertram Holloway as he fights a dinosaur in the sand.`,
+    `High above the pit sits Zalira Amaku, the Queen of Beasts and one of the three members of Port Nyanzaru's Golden Council. Her box is draped in silk and crowded with guards, a prized black panther and an equally prized black raptor.`
+   ],image:{src:`assets/toa/episode-3-arena-interior.jpg`,alt:`The crowded arena of Port Nyanzaru with a dinosaur in the fighting pit`,caption:`The Grand Arena of Port Nyanzaru.`,width:1536,height:1024,before:true},images:[
     {src:`assets/toa/episode-3-zalira-in-stands.jpg`,alt:`Zalira watching the arena beside a black panther and feathered dinosaur`,caption:`Zalira watches from the royal stands.`,width:1536,height:1024},
     {src:`assets/toa/episode-3-holloway-fighting-raptor.jpg`,alt:`Captain Bertram Holloway fighting a feathered raptor in the arena`,caption:`Captain Bertram Holloway faces a feathered raptor.`,width:1536,height:1024}
+   ]},
+   {title:`Blood in the Stands`,paragraphs:[
+    `Assassins erupt from the crowd during the bout. A fireball tears through Zalira's box, killing her panther and raptor and wounding her guards. A spear drops Zalira herself, but Sha'Wayne's healing magic brings her back before the attack can finish its work.`,
+    `A raptor escapes into the chaos. Bluey shoots it before it can reach the crowd, stealing Holloway's kill and earning the pit fighter's immediate displeasure. All but one assassin dies; the last escapes into the night badly wounded and carrying one of Bluey's arrows in a place no one would willingly choose.`,
+    `Father Nalu identifies the attackers as Jungle Spears from the markings on their bodies. As Zalira's people hurry her to safety, the Queen of Beasts studies the faces of those who saved her—especially Nine's.`
    ]}
   ]
  },
@@ -2284,12 +2325,13 @@ const TOA_EPISODE_DETAILS={
   dek:`A royal summons leads to lavish gifts, a dangerous new commission and the least subtle souvenir Nine could have chosen.`,
   beats:[
    {title:`The Queen's Summons`,paragraphs:[
-    `After a long rest and a hard-earned rise in level, the party is met by a remarkably composed twelve-year-old messenger. Zalira requests their company that day—an invitation phrased with enough certainty to make the answer obvious. He leads them through Port Nyanzaru and into a lavish pleasure palace overlooking the harbor.`,
-    `They enter by a private route and emerge into an audience chamber of gold, silk, incense, orchids and gilded cages. Zalira rests on a divan while recovering from the arena attack, with visible wrappings around her injured ribs. Beside her is an empty jeweled collar belonging to the panther she lost in the arena.`
+    `After a long rest and a hard-earned rise in level, a remarkably composed twelve-year-old messenger knocks before breakfast is finished. Zalira requests the party's company that day—an invitation phrased with enough certainty to make the answer obvious.`,
+    `He leads them through the back halls of a Plaza pleasure house and into a private audience chamber overlooking the harbor: gold and shadow, purple and green silk, parrots in gilded cages and orchids perfuming the air. Zalira rests on a leopard-skin divan with visible wrappings around her injured ribs. Beside her is her fallen panther's empty jeweled collar, while an empty perch still trails a few black feathers.`
    ]},
    {title:`Royal Formalities`,paragraphs:[
-    `Nine settles onto a cushion as if the palace had been waiting for him, introduces his companions as his servants and immediately takes to the royal treatment. Sha'Wayne offers sincere condolences for Zalira's lost companion, while Bluey becomes fascinated by a tiger and Father Nalu keeps Chief Bok safely away from the room's many predators.`,
-    `Sha'Wayne quietly casts Speak with Animals. The tiger holds itself like a soldier at attention, and the other animals provide a running commentary that is considerably less diplomatic than the conversation around them. Zalira, amused by the party's behavior, decides their servants speak well of Nine.`
+    `Sha'Wayne alone greets Zalira with a respectful half-bow, half-kneel; everyone else simply sits. Nine settles onto a cushion as if the palace had been waiting for him, presents his companions as his servants and immediately takes to the royal treatment. Nobody contradicts him, and Zalira appears to accept the arrangement.`,
+    `Sha'Wayne offers sincere condolences for Zalira's lost companion, while Bluey becomes fascinated by a tiger and Father Nalu keeps Chief Bok safely away from the room's many predators. Sha'Wayne quietly casts Speak with Animals. The tiger holds itself like a soldier at attention, and the other animals provide commentary that is considerably less diplomatic than the conversation around them.`,
+    `A joke about using the Bag of Tricks as an emergency food source takes Zalira a moment to recognize. She is less amused by questions about the missing guide Trades in Good Fortune, but promises to have someone look into his disappearance.`
    ],image:{src:`assets/toa/episode-4-audience-chamber.jpg`,alt:`Zalira reclining in an ornate audience chamber overlooking Port Nyanzaru`,caption:`The Queen of Beasts receives her rescuers in considerable style.`,width:1456,height:819,before:true}},
    {title:`Payment in Kind`,paragraphs:[
     `Zalira rewards the group for saving her life. The first gift is a Bag of Tricks, demonstrated when a tuft of fur becomes a giant venomous snake that hisses, “At lasssssst.” The bag can call forth an animal ally three times each day, and Nine directs the gift to Bluey.`,
@@ -2307,8 +2349,8 @@ const TOA_EPISODE_DETAILS={
     `The feeling appears mutual. Sha'Wayne leaves with food and a sketch of the palace. Nine leaves with the cushion he had been sitting on.`
    ]},
    {title:`Resupplying in Port Nyanzaru`,paragraphs:[
-    `The party returns to Nalabako's shop to prepare for the next expedition. Healing potions remain on backorder, so they concentrate on practical supplies: they sell one of their three canoes, keep two, and buy insect repellent, food and water. A trained dinosaur is discussed but left behind.`,
-    `They also hear Nalabako's unvarnished opinion of a rival supplier, whose merchandise she considers thoroughly substandard.`
+    `The party returns to Nala Bako's shop to prepare for the next expedition. Healing potions are unavailable. When Sha'Wayne asks where else they might buy supplies, Nala launches into an extended warning about the supposedly untrustworthy Harrow Supplies—a warning the party suspects may have as much to do with competition as quality.`,
+    `They sell one of their three canoes to Nala for 25 gold and keep the other two. The session ends before the group commits to the rest of its shopping list, so no additional supply purchases are recorded.`
    ]}
   ]
  }
@@ -2539,7 +2581,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, calendars and chat archive.</p><p class="version">Version 1.6.2 · Last updated November 5, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, campaign notes, calendars and chat archive.</p><p class="version">Version 1.7.0 · Last updated November 16, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindEpisodeDossiers(document.getElementById('ch-theseus'));
 bindToaDossierDrawer(document.getElementById('ch-toa'));
