@@ -192,9 +192,9 @@ details summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.05em;colo
 .campaign-banner{margin-bottom:20px}
 .campaign-banner::after{content:"";position:absolute;z-index:1;left:-12px;bottom:8px;width:12px;height:12px;clip-path:polygon(0 0,100% 0,100% 100%);background:var(--campaign-color,var(--crimson));filter:brightness(.58) drop-shadow(0 2px 2px rgba(42,31,23,.22))}
 .campaign-bookmark{position:absolute;z-index:2;isolation:isolate;left:-12px;bottom:20px;width:max-content;max-width:calc(100% - 18px);margin:0;padding:11px 43px 12px 22px;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%);background:var(--campaign-color,var(--crimson));color:#fffdf7;font:600 clamp(20px,3.4vw,31px)/1.12 var(--f-display);letter-spacing:.025em;filter:drop-shadow(0 5px 6px rgba(42,31,23,.28))}
-.campaign-bookmark::before,.campaign-bookmark::after{content:"";position:absolute;z-index:0;pointer-events:none;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%)}
-.campaign-bookmark::before{inset:4px 22px 4px 4px;background:rgba(255,253,247,.42)}
-.campaign-bookmark::after{inset:5px 23px 5px 5px;background:var(--campaign-color,var(--crimson))}
+.campaign-bookmark::before,.campaign-bookmark::after{content:"";position:absolute;z-index:0;pointer-events:none}
+.campaign-bookmark::before{inset:4px 7px 4px 4px;clip-path:polygon(0 0,100% 0,calc(100% - 16px) 50%,100% 100%,0 100%);background:rgba(255,253,247,.42)}
+.campaign-bookmark::after{inset:5px 9px 5px 5px;clip-path:polygon(0 0,100% 0,calc(100% - 15px) 50%,100% 100%,0 100%);background:var(--campaign-color,var(--crimson))}
 .campaign-bookmark>span{position:relative;z-index:1}
 .rolelist{display:flex;flex-wrap:wrap;gap:10px}
 .role{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border:1px solid;border-radius:20px;background:var(--page);font-family:var(--f-ui);font-size:15px;color:var(--ink);text-decoration:none}
@@ -2245,11 +2245,6 @@ const THESEUS_EPISODE_DETAILS={
  }
 };
 const TOA_EPISODE_DETAILS={
- 'Session 0':{
-  title:`Expedition Assembles`,
-  dek:`New Tomb of Annihilation characters were revealed, including Sha'Wayne and Framboust. Mark had to head out before the big reveal.`,
-  beats:[]
- },
  'Episode 1':{
   title:`Mind your head`,
   dek:`An invitation from a legendary adventurer sends the party across the sea to Chult, where pirates, crushing heat and an eye-marked obelisk await.`,
@@ -2419,7 +2414,8 @@ function bindSessions(root){
   det.querySelector('[data-jump]').addEventListener('click',e=>{e.preventDefault();document.getElementById(e.target.dataset.jump).scrollIntoView({behavior:'smooth',block:'start'})});}));
 }
 
-function episodes(k){const eps=played.filter(s=>s.c===k).slice();if(!eps.length)return'';
+const isSessionZero=s=>/^session\s*0$/i.test(s.ep||'');
+function episodes(k){const eps=played.filter(s=>s.c===k&&!isSessionZero(s)).slice();if(!eps.length)return'';
  const card=s=>episodeDetails(s)?episodeDossierCard(s):k==='theseus'?theseusEpisodeStaticCard(s):epCard(s);
  const strip=list=>`<div class="strip${k==='theseus'&&list.some(episodeDetails)?' theseus-strip':''}${k==='toa'?' toa-strip':''}">${list.map(card).join('')}</div>`;
  if(k!=='shatterbane')return `<h2 style="margin-top:36px">Previously on ${CAMPS[k].name}</h2>${strip(eps)}`;
@@ -2581,7 +2577,7 @@ function prepareMotion(root){
 /* ---------- routing ---------- */
 const CH=[['table','The Table',campaigns,'D&D'],['sessions','Sessions',sessions,'D&D'],...['shatterbane','theseus','toa','cos'].map(k=>[k,CAMPS[k].name,()=>campaign(k),'Campaigns']),...P.map(p=>[PID[p],p,()=>person(p),'Players']),['chat','The Group Chat',party,'Between Sessions'],['hall','Hall of Fame',hall,'Between Sessions']];
 const main=document.getElementById('main');
-main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, campaign notes, calendars and chat archive.</p><p class="version">Version 1.7.0 · Last updated November 16, 2026</p></footer>`;
+main.innerHTML=CH.map(([id,,fn])=>`<section class="chapter" id="ch-${id}" aria-label="${id}">${fn()}</section>`).join('')+`<footer class="colophon"><p><b>How this was made:</b> Drawn from the group’s session records, campaign notes, calendars and chat archive.</p><p class="version">Version 1.7.1 · Last updated November 16, 2026</p></footer>`;
 bindSessions(document.getElementById('ch-sessions'));
 bindEpisodeDossiers(document.getElementById('ch-theseus'));
 bindToaDossierDrawer(document.getElementById('ch-toa'));
